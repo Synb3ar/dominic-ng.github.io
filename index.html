@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dominic Ng | Financial Analyst Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #1e293b;
+            background-color: #f8f9fa;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: #0a2540;
+            color: white;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+        }
+
+        .logo span {
+            color: #4a9eff;
+            font-weight: 400;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 30px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #4a9eff;
+        }
+
+        /* Target Job Section (Hero) */
+        .hero {
+            background: linear-gradient(135deg, #0a2540 0%, #1a4b6e 100%);
+            color: white;
+            padding: 70px 0;
+            text-align: center;
+        }
+
+        .target-job {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: #4a9eff;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-tagline {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+            line-height: 1.5;
+        }
+
+        /* LinkedIn Button */
+        .linkedin-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 25px;
+            padding: 10px 24px;
+            background-color: #0077b5;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .linkedin-button:hover {
+            background-color: #005e8c;
+            transform: translateY(-2px);
+        }
+
+        /* Sections */
+        section {
+            padding: 60px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .section-title {
+            font-size: 1.75rem;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+            font-weight: 600;
+            color: #0a2540;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: #0052cc;
+        }
+
+        /* About Section */
+        .about-content {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .about-text {
+            flex: 2;
+        }
+
+        .about-text p {
+            margin-bottom: 18px;
+            color: #334155;
+        }
+
+        .expertise {
+            flex: 1;
+            background-color: white;
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0;
+        }
+
+        .expertise h3 {
+            margin-bottom: 18px;
+            color: #0a2540;
+            font-weight: 600;
+        }
+
+        .expertise ul {
+            list-style: none;
+        }
+
+        .expertise li {
+            margin-bottom: 12px;
+            padding-left: 24px;
+            position: relative;
+            color: #334155;
+        }
+
+        .expertise li:before {
+            content: "—";
+            color: #0052cc;
+            position: absolute;
+            left: 0;
+            font-weight: 600;
+        }
+
+        /* Achievements & Cards */
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 20px;
+        }
+
+        .achievement-card {
+            background-color: white;
+            padding: 24px;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            transition: all 0.2s ease;
+        }
+
+        .achievement-card:hover {
+            border-color: #cbd5e1;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .achievement-card p {
+            color: #334155;
+            line-height: 1.5;
+        }
+
+        .achievement-card strong {
+            color: #0a2540;
+        }
+
+        /* References Section */
+        .references-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+        }
+
+        .reference-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid #e2e8f0;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .reference-card:hover {
+            border-color: #0052cc;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,82,204,0.1);
+        }
+
+        .ref-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #0a2540;
+            margin-bottom: 4px;
+        }
+
+        .ref-title {
+            color: #0052cc;
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .ref-org {
+            color: #64748b;
+            font-size: 0.85rem;
+            margin-bottom: 14px;
+        }
+
+        .ref-contact {
+            font-size: 0.85rem;
+            color: #334155;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .ref-contact a {
+            color: #0a2540;
+            text-decoration: none;
+        }
+
+        .ref-contact a:hover {
+            color: #0052cc;
+        }
+
+        .ref-type {
+            display: inline-block;
+            background-color: #eef2ff;
+            font-size: 0.7rem;
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-top: 12px;
+            color: #0052cc;
+            font-weight: 500;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0a2540;
+            color: #94a3b8;
+            text-align: center;
+            padding: 32px 0;
+            font-size: 0.85rem;
+        }
+
+        footer p {
+            margin-top: 8px;
+        }
+
+        footer p:first-child {
+            margin-top: 0;
+        }
+
+        .social-links {
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            color: #4a9eff;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: white;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 0;
+            width: 90%;
+            max-width: 700px;
+            border-radius: 16px;
+            box-shadow: 0 20px 35px rgba(0,0,0,0.2);
+            animation: modalFadeIn 0.3s ease;
+            max-height: 85%;
+            overflow-y: auto;
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            background-color: #0a2540;
+            color: white;
+            padding: 20px 25px;
+            border-radius: 16px 16px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h3 {
+            margin: 0;
+            font-weight: 600;
+        }
+
+        .close-modal {
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .close-modal:hover {
+            color: #4a9eff;
+        }
+
+        .modal-body {
+            padding: 25px;
+            line-height: 1.6;
+            color: #334155;
+        }
+
+        .modal-body h4 {
+            color: #0a2540;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .modal-body p {
+            margin-bottom: 12px;
+        }
+
+        .modal-body .signature {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #e2e8f0;
+            font-style: italic;
+            color: #64748b;
+        }
+
+        /* Back to Top Button */
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #0a2540;
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.3rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            z-index: 99;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        #backToTop.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        #backToTop:hover {
+            background-color: #0052cc;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(0,82,204,0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-flex {
+                flex-direction: column;
+                gap: 15px;
+            }
+            nav a {
+                margin: 0 12px;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .section-title {
+                font-size: 1.5rem;
+            }
+            #backToTop {
+                bottom: 20px;
+                right: 20px;
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container header-flex">
+        <div class="logo">Dominic<span> Portfolio</span></div>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#achievements">Achievements</a>
+            <a href="#references">References</a>
+        </nav>
+    </div>
+</header>
+
+<!-- Target Graduate Job Section - prominently displayed -->
+<section class="hero">
+    <div class="container">
+        <div class="target-job">TARGET GRADUATE ROLE</div>
+        <h1>Financial Analyst</h1>
+        <div class="hero-tagline">
+            Detail-oriented aspiring Financial Analyst with strong analytical skills, Excel modeling expertise, and a passion for data-driven decision making.
+            <br><strong>Actively seeking 2027 graduate opportunities in Corporate Finance, Financial Planning or Analysis.</strong>
+        </div>
+        <a href="https://www.linkedin.com/in/dominic-ng-467317301" target="_blank" class="linkedin-button">
+            🔗 Connect on LinkedIn
+        </a>
+    </div>
+</section>
+
+<div class="container">
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="section-title">Professional Bio</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p><strong>Dominic Ng</strong> is a second-year BSc Management and Information Technology student at Lancaster University, predicted a 2:1, with a strong interest in financial analysis, data analytics, and business reporting. Through internships and coursework, he has developed hands-on experience working with Excel-based reporting, dashboard creation, and structured data analysis to support business decision-making.</p>
+                <p>Dominic has completed a Finance Internship at Qabas Consulting & Training, where he worked with data and reports using Microsoft Excel, coordinated activities remotely, and managed multiple tasks while maintaining accuracy and attention to detail. He also participated in insight programmes at Kainos and IBM, where he led a team to design a functional website and collaborated on a sustainability-focused product pitch.</p>
+                <p>His recent academic projects include credit risk analysis dashboards, workforce retention and HR analytics dashboards, and bank reconciliation with financial reporting models in Excel. These projects reflect his ability to turn complex data into clear, actionable insights.</p>
+                <p>Beyond finance, Dominic has over four years of customer-facing experience in hospitality environments at Lancaster University and The Joyinn, Belfast, where he developed strong communication, teamwork, and problem-solving skills under pressure. He is currently seeking internship and placement opportunities in Financial Analysis, Data Analytics, Business Analytics, or Consulting.</p>
+            </div>
+            <div class="expertise">
+                <h3>Technical & Analytical Expertise</h3>
+                <ul>
+                    <li>Excel (PivotTables, Dashboards, Formulas)</li>
+                    <li>Financial Analysis & Reporting</li>
+                    <li>Data Analytics & Visualization</li>
+                    <li>Credit Risk & Bank Reconciliation</li>
+                    <li>HTML, CSS & Basic Web Development</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements">
+        <h2 class="section-title">Key Achievements</h2>
+        <div class="achievements-grid">
+            <div class="achievement-card">
+                <p><strong>Ulster Table Tennis Champion</strong><br>Member of the 2025 U21A Interprovincial Championship-winning Ulster Team</p>
+            </div>
+            <div class="achievement-card">
+                <p><strong>Workforce Retention Dashboard</strong><br>Built Excel dashboard analysing HR data with PivotTables and data visualisation</p>
+            </div>
+            <div class="achievement-card">
+                <p><strong>Bank Reconciliation Report</strong><br>Developed Excel-based reconciliation with conditional formatting and summary dashboard</p>
+            </div>
+            <div class="achievement-card">
+                <p><strong>Student Prefect & Head Ambassador</strong><br>Campbell College (2022-2024), supporting student engagement and school representation</p>
+            </div>
+            <div class="achievement-card">
+                <p><strong>Goldman Sachs Virtual Experience</strong><br>Controllers Job Simulation certificate from Forage (Issued Feb 2026)</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- REFERENCES SECTION -->
+    <section id="references">
+        <h2 class="section-title">Professional References</h2>
+        <p style="margin-bottom: 30px; color: #555;">These individuals have kindly agreed to provide professional references. Contact them directly for verification of my skills, work ethic, and graduate potential.</p>
+        
+        <div class="references-grid">
+            <!-- Reference 1 - Finance Internship Manager -->
+            <div class="reference-card" data-ref="julio">
+                <div class="ref-name">Julio Ortega</div>
+                <div class="ref-title">Manager</div>
+                <div class="ref-org">Qabas Consulting & Training (Finance Internship)</div>
+                <div class="ref-contact">
+                    📧 <a href="mailto:jj@qbs.ly">jj@qbs.ly</a>
+                </div>
+                <div class="ref-type">Professional Reference (Internship Manager)</div>
+                <p style="margin-top: 12px; font-size: 0.85rem; color: #555;">Julio supervised my finance internship where I worked with Excel-based data and reports, coordinated remote activities, and managed multiple tasks with accuracy.</p>
+            </div>
+
+            <!-- Reference 2 - Lancaster Marketplace Manager -->
+            <div class="reference-card" data-ref="jack">
+                <div class="ref-name">Jack Shiers</div>
+                <div class="ref-title">Manager</div>
+                <div class="ref-org">Lancaster Marketplace, Lancaster University</div>
+                <div class="ref-contact">
+                    📧 <a href="mailto:j.shiers@lancaster.ac.uk">j.shiers@lancaster.ac.uk</a>
+                </div>
+                <div class="ref-type">Professional Reference (Current Manager)</div>
+                <p style="margin-top: 12px; font-size: 0.85rem; color: #555;">Jack manages my Food & Beverage Assistant role, where I develop customer service, teamwork, and problem-solving skills in a fast-paced environment.</p>
+            </div>
+
+            <!-- Reference 3 - Lancaster Barkers Manager -->
+            <div class="reference-card" data-ref="jonathon">
+                <div class="ref-name">Jonathon Wray</div>
+                <div class="ref-title">Manager</div>
+                <div class="ref-org">Lancaster Barkers, Cartmel - Lancaster University</div>
+                <div class="ref-contact">
+                    📧 <a href="mailto:j.d.wray@lancaster.ac.uk">j.d.wray@lancaster.ac.uk</a>
+                </div>
+                <div class="ref-type">Professional Reference (Current Manager)</div>
+                <p style="margin-top: 12px; font-size: 0.85rem; color: #555;">Jonathon oversees my work at Lancaster Barkers, where I demonstrate reliability, organisation, and effective communication under pressure.</p>
+            </div>
+
+            <!-- Reference 4 - Previous Hospitality Manager (Joyinn) -->
+            <div class="reference-card" data-ref="benny">
+                <div class="ref-name">Benny Ng</div>
+                <div class="ref-title">Manager</div>
+                <div class="ref-org">The Joyinn, Belfast</div>
+                <div class="ref-contact">
+                    📧 <a href="mailto:bennyjoyinn@yahoo.com.hk">bennyjoyinn@yahoo.com.hk</a>
+                </div>
+                <div class="ref-type">Professional Reference (Former Manager)</div>
+                <p style="margin-top: 12px; font-size: 0.85rem; color: #555;">Benny managed my bartender role where I developed customer service, cash handling, and multitasking skills in a busy hospitality environment.</p>
+            </div>
+
+            <!-- Reference 5 - Academic Reference (A-Level Teacher/Tutor) -->
+            <div class="reference-card" data-ref="daniel">
+                <div class="ref-name">Daniel McShane</div>
+                <div class="ref-title">A-Level Teacher / Tutor</div>
+                <div class="ref-org">Campbell College Belfast</div>
+                <div class="ref-contact">
+                    📧 <a href="mailto:dmcshane784@ccblearning.org.uk">dmcshane784@ccblearning.org.uk</a>
+                </div>
+                <div class="ref-type">Academic Reference (Former Teacher)</div>
+                <p style="margin-top: 12px; font-size: 0.85rem; color: #555;">Daniel taught me at Campbell College and can speak to my academic abilities, discipline, and leadership as a Student Prefect and Head Ambassador.</p>
+            </div>
+        </div>
+
+        <p style="margin-top: 30px; font-size: 0.85rem; color: #666; background: #e8f0f7; padding: 12px; border-radius: 8px;">
+        <strong>Note to Employers:</strong> All references listed above have given prior consent. Please contact them during business hours.
+        </p>
+    </section>
+</div>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2026 Dominic Ng — Graduate Portfolio | Actively seeking Financial Analyst roles</p>
+        <p>Based in Belfast, UK | Open to remote and hybrid opportunities</p>
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/dominic-ng-467317301" target="_blank">🔗 LinkedIn</a>
+        </div>
+    </div>
+</footer>
+
+<!-- Back to Top Button -->
+<a href="#" id="backToTop" title="Back to Top">↑</a>
+
+<!-- Modal Popup -->
+<div id="referenceModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 id="modalRefName">Reference Letter</h3>
+            <span class="close-modal">&times;</span>
+        </div>
+        <div class="modal-body" id="modalBody">
+            <!-- Dynamic content will appear here -->
+        </div>
+    </div>
+</div>
+
+<script>
+    // Reference letter content for each person
+    const referenceLetters = {
+        'Julio Ortega': {
+            title: 'Finance Internship Manager',
+            letter: `Dear Hiring Team,
+
+I am pleased to provide this reference for Dominic Ng, who completed a Finance Internship at Qabas Consulting & Training under my supervision.
+
+During his time with us, Dominic demonstrated strong analytical skills and a keen attention to detail. He worked extensively with Microsoft Excel, handling data reports and assisting with financial reconciliations. Despite working remotely, Dominic showed excellent communication skills and the ability to manage multiple tasks while maintaining accuracy.
+
+One quality that stood out was his reliability. When given deadlines, Dominic consistently delivered on time. He was proactive in asking questions and eager to learn more about financial processes.
+
+I believe Dominic has the foundation to become a strong Financial Analyst. He is diligent, numerate, and works well both independently and as part of a team.
+
+Please feel free to contact me if you require further information.
+
+Yours sincerely,
+Julio Ortega
+Manager, Qabas Consulting & Training`
+        },
+        'Jack Shiers': {
+            title: 'Food & Beverage Manager',
+            letter: `To Whom It May Concern,
+
+I have had the pleasure of managing Dominic Ng at Lancaster Marketplace for several months. Dominic works as a Food & Beverage Assistant in our fast-paced university hospitality environment.
+
+What impresses me most about Dominic is his ability to remain calm under pressure. During peak service periods, he handles multiple customer requests efficiently while maintaining a professional and friendly demeanor. He is a reliable team player who communicates clearly and steps up when needed.
+
+Dominic's problem-solving skills are also noteworthy. He doesn't wait for instructions when something needs fixing—he takes initiative. His timekeeping and attendance are excellent.
+
+While this role is in hospitality, the soft skills Dominic has developed—teamwork, communication, organisation, and working under pressure—are directly transferable to any graduate finance role.
+
+I recommend Dominic without reservation.
+
+Best regards,
+Jack Shiers
+Manager, Lancaster Marketplace`
+        },
+        'Jonathon Wray': {
+            title: 'Food & Beverage Manager',
+            letter: `Dear Recruiter,
+
+I am writing to recommend Dominic Ng, who works as a Food & Beverage Assistant at Lancaster Barkers, Cartmel.
+
+Dominic is one of our most dependable team members. He consistently demonstrates strong organisational skills and takes pride in maintaining high standards. In a busy environment where things change quickly, Dominic adapts without complaint and always asks how he can help.
+
+His communication skills are excellent—whether with customers or colleagues. I have observed him de-escalate customer concerns with patience and professionalism. He also pays close attention to detail, whether handling cash, following procedures, or setting up the workspace.
+
+Dominic has expressed his ambition to pursue a career in Financial Analysis. Based on his work ethic, attention to detail, and ability to learn quickly, I am confident he will succeed.
+
+Please contact me if you have any questions.
+
+Yours sincerely,
+Jonathon Wray
+Manager, Lancaster Barkers`
+        },
+        'Benny Ng': {
+            title: 'Former Manager, The Joyinn',
+            letter: `To the Hiring Manager,
+
+I had the pleasure of managing Dominic Ng at The Joyinn, Belfast, where he worked as a bartender for several years.
+
+Dominic was one of our most trusted team members. In a busy bar environment, he handled cash accurately, managed multiple drink orders simultaneously, and always maintained a positive attitude with customers. His customer service skills are exceptional—guests regularly complimented his friendly and efficient service.
+
+What makes Dominic stand out is his responsibility. I never had to worry about his shift coverage, cash handling accuracy, or how he treated customers. He is honest, hardworking, and takes pride in doing things right.
+
+The discipline and multitasking skills he developed at The Joyinn will serve him well in any graduate finance role. I am happy to recommend him.
+
+Warm regards,
+Benny Ng
+Former Manager, The Joyinn`
+        },
+        'Daniel McShane': {
+            title: 'A-Level Teacher / Tutor',
+            letter: `Dear Selection Panel,
+
+I taught Dominic Ng during his A-Level studies at Campbell College Belfast, and I also supervised him in his roles as Student Prefect and Head Ambassador.
+
+Academically, Dominic was a diligent and engaged student. He asked thoughtful questions, met deadlines consistently, and demonstrated strong problem-solving abilities. He has a natural aptitude for analytical thinking and works well under pressure—qualities I observed during his exam preparations.
+
+In his leadership roles as Prefect and Head Ambassador (2022-2024), Dominic showed maturity beyond his years. He represented the school at events, supported younger students, and acted as a role model for his peers. He communicates effectively with both staff and students and handles responsibility with professionalism.
+
+I have every confidence that Dominic will thrive in a Financial Analyst graduate role. He is intelligent, dedicated, and conducts himself with integrity.
+
+Please do not hesitate to contact me for further details.
+
+Yours faithfully,
+Daniel McShane
+A-Level Teacher / Tutor
+Campbell College Belfast`
+        }
+    };
+
+    // Get modal elements
+    const modal = document.getElementById('referenceModal');
+    const closeBtn = document.querySelector('.close-modal');
+    const modalRefName = document.getElementById('modalRefName');
+    const modalBody = document.getElementById('modalBody');
+
+    // Add click handlers to all reference cards
+    const referenceCards = document.querySelectorAll('.reference-card');
+    referenceCards.forEach(card => {
+        card.addEventListener('click', () => {
+            const nameElement = card.querySelector('.ref-name');
+            if (nameElement) {
+                const name = nameElement.textContent.trim();
+                const letterData = referenceLetters[name];
+                
+                if (letterData) {
+                    modalRefName.textContent = `Reference Letter: ${name}`;
+                    modalBody.innerHTML = `
+                        <h4>${letterData.title}</h4>
+                        <p style="white-space: pre-line; font-family: inherit;">${letterData.letter}</p>
+                        <div class="signature">
+                            <strong>📄 Note to Employers:</strong> This is a draft reference letter prepared with the referee's consent. 
+                            Please contact them directly for verification or an updated letter.
+                        </div>
+                    `;
+                    modal.style.display = 'flex';
+                }
+            }
+        });
+    });
+
+    // Close modal when clicking X
+    closeBtn.addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
+
+    // Close modal when clicking outside the content
+    window.addEventListener('click', (event) => {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
+
+    // Back to Top Button Logic
+    const backToTop = document.getElementById('backToTop');
+    
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            backToTop.classList.add('show');
+        } else {
+            backToTop.classList.remove('show');
+        }
+    });
+
+    backToTop.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+</script>
+
+</body>
+</html>
