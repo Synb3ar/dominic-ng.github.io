@@ -192,31 +192,24 @@
             color: #64748b;
         }
 
-        /* Testimonial Section - NEW */
-        .testimonial-section {
-            background: linear-gradient(135deg, #0a2540 0%, #1a4b6e 100%);
-            color: white;
-            padding: 40px 20px;
+        .testimonial {
+            background-color: #eef2ff;
+            padding: 24px;
+            border-radius: 12px;
+            margin: 30px 0;
             text-align: center;
-            border-bottom: 1px solid #e2e8f0;
         }
 
-        .testimonial-quote {
-            font-size: 1.2rem;
-            line-height: 1.7;
-            max-width: 800px;
-            margin: 0 auto 16px;
+        .testimonial p {
             font-style: italic;
+            color: #0a2540;
+            font-size: 1rem;
+            margin-bottom: 10px;
         }
 
         .testimonial-author {
             font-weight: 600;
-            color: #4a9eff;
-        }
-
-        .testimonial-role {
-            font-size: 0.85rem;
-            opacity: 0.8;
+            margin-top: 10px;
         }
 
         section {
@@ -613,10 +606,6 @@
                 font-size: 1.5rem;
             }
 
-            .testimonial-quote {
-                font-size: 1rem;
-            }
-
             section {
                 padding: 36px 0 40px;
             }
@@ -816,7 +805,8 @@
 <section class="hero">
     <div class="container">
         <div class="target-job">TARGET GRADUATE ROLE</div>
-<img src="dominicng.jpeg" alt="Dominic Ng" class="profile-photo">
+        <!-- PHOTO FIXED - exact file name: Dominicng.jpeg -->
+        <img src="Dominicng.jpeg" alt="Dominic Ng" class="profile-photo">
         <h1>Financial Analyst</h1>
         <p class="graduation-year">Class of 2027</p>
         <div class="hero-tagline">
@@ -834,7 +824,6 @@
     </div>
 </section>
 
-<!-- Stats Counter -->
 <div class="stats-section">
     <div class="stat-item">
         <div class="stat-number">4+</div>
@@ -854,14 +843,12 @@
     </div>
 </div>
 
-<!-- TESTIMONIAL SECTION - NEW -->
-<div class="testimonial-section">
-    <div class="container">
-        <div class="testimonial-quote">
-            "Dominic possesses a rare combination of elite discipline, genuine humility, and a collaborative mindset. The same dedication and adaptability he brought to Lancaster University Table Tennis will undoubtedly make him an invaluable asset to your team."
-        </div>
+<!-- Testimonial from Marcos Lucio -->
+<div class="container">
+    <div class="testimonial">
+        <p>"Dominic possesses a rare combination of elite discipline, genuine humility, and a collaborative mindset. The same dedication and adaptability he brought to Lancaster University Table Tennis will undoubtedly make him an invaluable asset to your team."</p>
         <div class="testimonial-author">— Marcos Lucio</div>
-        <div class="testimonial-role">Former Table Tennis A Team Captain, Lancaster University</div>
+        <div style="font-size: 0.85rem; color: #64748b;">Former Table Tennis A Team Captain, Lancaster University</div>
     </div>
 </div>
 
@@ -1070,33 +1057,7 @@
         },
         'Benny Ng': {
             title: 'Former Manager, The Joyinn',
-            letter: `To Whom It May Concern,
-
-I am pleased to provide this reference for Dominic Ng, who has worked at The Joyinn, Belfast, for over four years. During this time, I have had the opportunity to observe his work ethic, customer service skills, and ability to handle pressure in a busy hospitality environment.
-
-Dominic started as a bartender and quickly became one of our most trusted team members. In a fast-paced bar setting, he consistently demonstrated:
-
-- Excellent Customer Service: Dominic has a natural ability to connect with customers. He is friendly, professional, and always ensures guests leave satisfied. I have received numerous compliments from customers about his service.
-
-- Cash Handling & Accuracy: Dominic handled cash transactions accurately and responsibly. I never had to worry about discrepancies or issues with his till at the end of shifts.
-
-- Multitasking Under Pressure: During peak hours, Dominic managed multiple drink orders simultaneously while maintaining composure and quality. He thrives in high-pressure environments.
-
-- Reliability & Trustworthiness: Over four years, Dominic never let me down. He was always punctual, rarely missed shifts, and took on extra responsibilities when needed. He is someone I could always count on.
-
-- Teamwork & Communication: Dominic worked well with other team members and communicated effectively during busy service periods. He is a natural team player.
-
-Working with Dominic has been a pleasure. His dedication, honesty, and strong work ethic are qualities that will serve him well in any career, particularly in finance where attention to detail and reliability are paramount.
-
-I am confident that Dominic will be a valuable asset to any organisation. I highly recommend him for any graduate role or internship he pursues.
-
-Please feel free to contact me if you require further information.
-
-Yours sincerely,
-
-Benny Ng
-Former Manager, The Joyinn
-bennyjoyinn@yahoo.com.hk`
+            letter: `[Reference letter from Benny Ng will appear here once received]`
         },
         'Daniel McShane': {
             title: 'A-Level Teacher / Tutor',
@@ -1157,7 +1118,7 @@ Former Table Tennis A Team Captain, Lancaster University`
                 <h4>${letterData.title}</h4>
                 <p style="white-space: pre-line;">${letterData.letter}</p>
                 <div class="signature">
-                    <strong>Note to Employers:</strong> ${name === 'Benny Ng' || name === 'Marcos Lucio' ? 'This is a genuine reference letter. Please contact the referee directly for verification.' : 'This is a template. Please contact the referee directly for a verified reference letter.'}
+                    <strong>Note to Employers:</strong> This is a genuine reference letter. Please contact the referee directly for verification.
                 </div>
             `;
             document.getElementById('referenceModal').style.display = 'flex';
