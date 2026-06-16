@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=5.0">
     <title>Dominic Ng | Financial Analyst Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
 
@@ -19,6 +19,7 @@
             color: #1e293b;
             background-color: #f8f9fa;
             scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
         }
 
         .container {
@@ -27,11 +28,10 @@
             padding: 0 20px;
         }
 
-        /* Header & Navigation */
         header {
             background-color: #0a2540;
             color: white;
-            padding: 20px 0;
+            padding: 16px 0;
             position: sticky;
             top: 0;
             z-index: 100;
@@ -43,10 +43,11 @@
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
+            gap: 12px;
         }
 
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: 600;
             letter-spacing: -0.3px;
         }
@@ -56,65 +57,101 @@
             font-weight: 400;
         }
 
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 16px;
+        }
+
         nav a {
             color: white;
             text-decoration: none;
-            margin-left: 30px;
             font-weight: 500;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             transition: color 0.3s;
+            padding: 6px 0;
         }
 
         nav a:hover {
             color: #4a9eff;
         }
 
-        /* Target Job Section (Hero) */
         .hero {
             background: linear-gradient(135deg, #0a2540 0%, #1a4b6e 100%);
             color: white;
-            padding: 70px 0;
+            padding: 50px 0 60px;
             text-align: center;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .target-job {
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             text-transform: uppercase;
-            letter-spacing: 4px;
+            letter-spacing: 3px;
             color: #4a9eff;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             font-weight: 600;
         }
 
-        .hero h1 {
-            font-size: 3rem;
+        .profile-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #4a9eff;
             margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            margin-bottom: 4px;
             font-weight: 600;
             letter-spacing: -0.5px;
         }
 
+        .graduation-year {
+            font-size: 1rem;
+            color: #4a9eff;
+            margin-bottom: 16px;
+        }
+
         .hero-tagline {
-            font-size: 1.1rem;
+            font-size: 1rem;
             max-width: 700px;
             margin: 0 auto;
             opacity: 0.9;
-            line-height: 1.5;
+            line-height: 1.6;
+            padding: 0 10px;
         }
 
-        /* LinkedIn Button */
+        .button-group {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 22px;
+        }
+
         .linkedin-button {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 8px;
-            margin-top: 25px;
-            padding: 10px 24px;
+            padding: 12px 28px;
             background-color: #0077b5;
             color: white;
             text-decoration: none;
             border-radius: 30px;
             font-weight: 500;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             transition: background-color 0.3s, transform 0.2s;
+            min-height: 48px;
+            min-width: 48px;
         }
 
         .linkedin-button:hover {
@@ -122,15 +159,74 @@
             transform: translateY(-2px);
         }
 
-        /* Sections */
+        .hire-button {
+            background-color: #0052cc;
+        }
+
+        .hire-button:hover {
+            background-color: #003d99;
+        }
+
+        .stats-section {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            padding: 30px 20px;
+            background-color: white;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #0a2540;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: #64748b;
+        }
+
+        /* Testimonial Section - NEW */
+        .testimonial-section {
+            background: linear-gradient(135deg, #0a2540 0%, #1a4b6e 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .testimonial-quote {
+            font-size: 1.2rem;
+            line-height: 1.7;
+            max-width: 800px;
+            margin: 0 auto 16px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: #4a9eff;
+        }
+
+        .testimonial-role {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
         section {
-            padding: 60px 0;
+            padding: 48px 0 52px;
             border-bottom: 1px solid #e2e8f0;
         }
 
         .section-title {
-            font-size: 1.75rem;
-            margin-bottom: 40px;
+            font-size: 1.5rem;
+            margin-bottom: 32px;
             position: relative;
             display: inline-block;
             font-weight: 600;
@@ -140,17 +236,16 @@
         .section-title:after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: -8px;
             left: 0;
-            width: 50px;
+            width: 40px;
             height: 3px;
             background-color: #0052cc;
         }
 
-        /* About Section */
         .about-content {
             display: flex;
-            gap: 40px;
+            gap: 30px;
             flex-wrap: wrap;
         }
 
@@ -159,23 +254,25 @@
         }
 
         .about-text p {
-            margin-bottom: 18px;
+            margin-bottom: 16px;
             color: #334155;
+            font-size: 0.95rem;
         }
 
         .expertise {
             flex: 1;
             background-color: white;
-            padding: 24px;
+            padding: 20px;
             border-radius: 12px;
             box-shadow: 0 1px 3px rgba(0,0,0,0.05);
             border: 1px solid #e2e8f0;
         }
 
         .expertise h3 {
-            margin-bottom: 18px;
+            margin-bottom: 16px;
             color: #0a2540;
             font-weight: 600;
+            font-size: 1rem;
         }
 
         .expertise ul {
@@ -183,10 +280,11 @@
         }
 
         .expertise li {
-            margin-bottom: 12px;
-            padding-left: 24px;
+            margin-bottom: 10px;
+            padding-left: 22px;
             position: relative;
             color: #334155;
+            font-size: 0.9rem;
         }
 
         .expertise li:before {
@@ -197,20 +295,20 @@
             font-weight: 600;
         }
 
-        /* Achievements & Cards */
         .achievements-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
-            margin-top: 20px;
+            gap: 20px;
+            margin-top: 16px;
         }
 
         .achievement-card {
             background-color: white;
-            padding: 24px;
+            padding: 20px;
             border-radius: 12px;
             border: 1px solid #e2e8f0;
             transition: all 0.2s ease;
+            min-height: 100px;
         }
 
         .achievement-card:hover {
@@ -221,26 +319,27 @@
         .achievement-card p {
             color: #334155;
             line-height: 1.5;
+            font-size: 0.95rem;
         }
 
         .achievement-card strong {
             color: #0a2540;
         }
 
-        /* References Section */
         .references-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 24px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
         }
 
         .reference-card {
             background-color: white;
             border-radius: 12px;
-            padding: 24px;
+            padding: 20px;
             border: 1px solid #e2e8f0;
             transition: all 0.2s ease;
             cursor: pointer;
+            min-height: 140px;
         }
 
         .reference-card:hover {
@@ -250,7 +349,7 @@
         }
 
         .ref-name {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 700;
             color: #0a2540;
             margin-bottom: 4px;
@@ -259,8 +358,8 @@
         .ref-title {
             color: #0052cc;
             font-weight: 600;
-            font-size: 0.85rem;
-            margin-bottom: 6px;
+            font-size: 0.8rem;
+            margin-bottom: 4px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
@@ -268,15 +367,16 @@
         .ref-org {
             color: #64748b;
             font-size: 0.85rem;
-            margin-bottom: 14px;
+            margin-bottom: 12px;
         }
 
         .ref-contact {
             font-size: 0.85rem;
             color: #334155;
-            margin-top: 12px;
-            padding-top: 12px;
+            margin-top: 10px;
+            padding-top: 10px;
             border-top: 1px solid #e2e8f0;
+            word-break: break-all;
         }
 
         .ref-contact a {
@@ -294,22 +394,21 @@
             font-size: 0.7rem;
             padding: 4px 10px;
             border-radius: 20px;
-            margin-top: 12px;
+            margin-top: 10px;
             color: #0052cc;
             font-weight: 500;
         }
 
-        /* Footer */
         footer {
             background-color: #0a2540;
             color: #94a3b8;
             text-align: center;
-            padding: 32px 0;
+            padding: 28px 0;
             font-size: 0.85rem;
         }
 
         footer p {
-            margin-top: 8px;
+            margin-top: 6px;
         }
 
         footer p:first-child {
@@ -317,7 +416,7 @@
         }
 
         .social-links {
-            margin-top: 15px;
+            margin-top: 12px;
         }
 
         .social-links a {
@@ -325,13 +424,14 @@
             text-decoration: none;
             margin: 0 10px;
             transition: color 0.3s;
+            display: inline-block;
+            padding: 6px 0;
         }
 
         .social-links a:hover {
             color: white;
         }
 
-        /* Modal Styles */
         .modal {
             display: none;
             position: fixed;
@@ -340,48 +440,47 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0,0,0,0.5);
+            background-color: rgba(0,0,0,0.6);
             justify-content: center;
             align-items: center;
+            padding: 16px;
         }
 
         .modal-content {
             background-color: white;
-            margin: 5% auto;
+            margin: 0 auto;
             padding: 0;
-            width: 90%;
+            width: 100%;
             max-width: 700px;
             border-radius: 16px;
-            box-shadow: 0 20px 35px rgba(0,0,0,0.2);
+            box-shadow: 0 20px 35px rgba(0,0,0,0.3);
             animation: modalFadeIn 0.3s ease;
-            max-height: 85%;
+            max-height: 90vh;
             overflow-y: auto;
         }
 
         @keyframes modalFadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .modal-header {
             background-color: #0a2540;
             color: white;
-            padding: 20px 25px;
+            padding: 16px 20px;
             border-radius: 16px 16px 0 0;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
         }
 
         .modal-header h3 {
             margin: 0;
             font-weight: 600;
+            font-size: 1.1rem;
         }
 
         .close-modal {
@@ -389,6 +488,8 @@
             font-weight: bold;
             cursor: pointer;
             transition: color 0.2s;
+            padding: 4px 8px;
+            line-height: 1;
         }
 
         .close-modal:hover {
@@ -396,50 +497,43 @@
         }
 
         .modal-body {
-            padding: 25px;
+            padding: 24px;
             line-height: 1.6;
             color: #334155;
         }
 
-        .modal-body h4 {
-            color: #0a2540;
-            margin-top: 20px;
-            margin-bottom: 10px;
-        }
-
-        .modal-body p {
-            margin-bottom: 12px;
-        }
-
         .modal-body .signature {
-            margin-top: 25px;
-            padding-top: 20px;
+            margin-top: 20px;
+            padding-top: 16px;
             border-top: 1px solid #e2e8f0;
             font-style: italic;
             color: #64748b;
+            font-size: 0.9rem;
         }
 
-        /* Back to Top Button */
         #backToTop {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
+            bottom: 20px;
+            right: 20px;
             background-color: #0a2540;
             color: white;
-            width: 45px;
-            height: 45px;
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             text-decoration: none;
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             font-weight: bold;
             transition: all 0.3s ease;
             z-index: 99;
             box-shadow: 0 2px 10px rgba(0,0,0,0.2);
             opacity: 0;
             visibility: hidden;
+            touch-action: manipulation;
+            border: none;
+            cursor: pointer;
         }
 
         #backToTop.show {
@@ -453,27 +547,255 @@
             box-shadow: 0 4px 15px rgba(0,82,204,0.3);
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
             .header-flex {
                 flex-direction: column;
-                gap: 15px;
+                gap: 12px;
+                align-items: stretch;
+                text-align: center;
             }
+
+            .logo {
+                font-size: 1.2rem;
+                text-align: center;
+            }
+
+            nav {
+                justify-content: center;
+                gap: 6px 14px;
+            }
+
             nav a {
-                margin: 0 12px;
+                font-size: 0.85rem;
+                padding: 8px 4px;
+                min-height: 44px;
+                display: inline-flex;
+                align-items: center;
             }
+
+            .hero {
+                padding: 40px 0 50px;
+            }
+
+            .profile-photo {
+                width: 120px;
+                height: 120px;
+            }
+
             .hero h1 {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
-            .section-title {
+
+            .hero-tagline {
+                font-size: 0.95rem;
+                padding: 0 5px;
+            }
+
+            .button-group {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .linkedin-button {
+                padding: 14px 24px;
+                font-size: 0.9rem;
+                min-height: 48px;
+                width: 100%;
+                max-width: 280px;
+            }
+
+            .stats-section {
+                gap: 20px;
+                padding: 20px 16px;
+            }
+
+            .stat-number {
                 font-size: 1.5rem;
             }
+
+            .testimonial-quote {
+                font-size: 1rem;
+            }
+
+            section {
+                padding: 36px 0 40px;
+            }
+
+            .section-title {
+                font-size: 1.3rem;
+                margin-bottom: 24px;
+            }
+
+            .section-title:after {
+                width: 35px;
+                bottom: -6px;
+            }
+
+            .about-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .about-text p {
+                font-size: 0.92rem;
+            }
+
+            .expertise {
+                order: -1;
+                padding: 16px;
+            }
+
+            .expertise li {
+                font-size: 0.88rem;
+                padding-left: 20px;
+            }
+
+            .achievements-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+
+            .achievement-card {
+                padding: 16px;
+                min-height: 80px;
+            }
+
+            .achievement-card p {
+                font-size: 0.92rem;
+            }
+
+            .references-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+
+            .reference-card {
+                padding: 16px;
+                min-height: 120px;
+            }
+
+            .ref-name {
+                font-size: 1rem;
+            }
+
+            .ref-org {
+                font-size: 0.8rem;
+            }
+
+            .ref-contact {
+                font-size: 0.8rem;
+                word-break: break-word;
+            }
+
+            .ref-type {
+                font-size: 0.65rem;
+                padding: 3px 8px;
+            }
+
+            .modal-content {
+                max-height: 95vh;
+                margin: 0;
+                border-radius: 12px;
+            }
+
+            .modal-header {
+                padding: 14px 16px;
+            }
+
+            .modal-header h3 {
+                font-size: 1rem;
+            }
+
+            .close-modal {
+                font-size: 24px;
+                padding: 4px 6px;
+            }
+
+            .modal-body {
+                padding: 16px;
+                font-size: 0.92rem;
+            }
+
+            footer {
+                padding: 24px 0;
+                font-size: 0.8rem;
+            }
+
+            footer p {
+                padding: 0 10px;
+            }
+
             #backToTop {
-                bottom: 20px;
-                right: 20px;
-                width: 40px;
-                height: 40px;
-                font-size: 1.1rem;
+                width: 52px;
+                height: 52px;
+                font-size: 1.5rem;
+                bottom: 16px;
+                right: 16px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .container {
+                padding: 0 14px;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero-tagline {
+                font-size: 0.88rem;
+            }
+
+            .section-title {
+                font-size: 1.15rem;
+            }
+
+            .profile-photo {
+                width: 100px;
+                height: 100px;
+            }
+
+            .linkedin-button {
+                min-width: 100%;
+                padding: 12px 18px;
+                font-size: 0.85rem;
+            }
+
+            nav a {
+                font-size: 0.8rem;
+                gap: 4px 10px;
+            }
+
+            .achievement-card p,
+            .reference-card p {
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 768px) and (orientation: landscape) {
+            .hero {
+                padding: 30px 0 40px;
+            }
+
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+
+            .profile-photo {
+                width: 100px;
+                height: 100px;
+            }
+
+            .header-flex {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .achievements-grid,
+            .references-grid {
+                grid-template-columns: 1fr 1fr;
             }
         }
     </style>
@@ -491,23 +813,59 @@
     </div>
 </header>
 
-<!-- Target Graduate Job Section -->
 <section class="hero">
     <div class="container">
         <div class="target-job">TARGET GRADUATE ROLE</div>
+        <img src="Dominicng.jpg" alt="Dominic Ng" class="profile-photo" onerror="this.onerror=null; this.src='Dominicng.jpeg';">
         <h1>Financial Analyst</h1>
+        <p class="graduation-year">Class of 2027</p>
         <div class="hero-tagline">
             Detail-oriented aspiring Financial Analyst with strong analytical skills, Excel modeling expertise, and a passion for data-driven decision making.
             <br><strong>Actively seeking 2027 graduate opportunities in Corporate Finance, Financial Planning or Analysis.</strong>
         </div>
-        <a href="https://www.linkedin.com/in/dominic-ng-467317301" target="_blank" class="linkedin-button">
-            Connect on LinkedIn
-        </a>
+        <div class="button-group">
+            <a href="https://www.linkedin.com/in/dominic-ng-467317301" target="_blank" class="linkedin-button">
+                Connect on LinkedIn
+            </a>
+            <a href="mailto:domininc.ng@example.com" class="linkedin-button hire-button">
+                Hire Me
+            </a>
+        </div>
     </div>
 </section>
 
+<!-- Stats Counter -->
+<div class="stats-section">
+    <div class="stat-item">
+        <div class="stat-number">4+</div>
+        <div class="stat-label">Years Experience</div>
+    </div>
+    <div class="stat-item">
+        <div class="stat-number">10</div>
+        <div class="stat-label">Professional References</div>
+    </div>
+    <div class="stat-item">
+        <div class="stat-number">1</div>
+        <div class="stat-label">Internships</div>
+    </div>
+    <div class="stat-item">
+        <div class="stat-number">4</div>
+        <div class="stat-label">Excel Projects</div>
+    </div>
+</div>
+
+<!-- TESTIMONIAL SECTION - NEW -->
+<div class="testimonial-section">
+    <div class="container">
+        <div class="testimonial-quote">
+            "Dominic possesses a rare combination of elite discipline, genuine humility, and a collaborative mindset. The same dedication and adaptability he brought to Lancaster University Table Tennis will undoubtedly make him an invaluable asset to your team."
+        </div>
+        <div class="testimonial-author">— Marcos Lucio</div>
+        <div class="testimonial-role">Former Table Tennis A Team Captain, Lancaster University</div>
+    </div>
+</div>
+
 <div class="container">
-    <!-- About Section -->
     <section id="about">
         <h2 class="section-title">Professional Bio</h2>
         <div class="about-content">
@@ -530,7 +888,6 @@
         </div>
     </section>
 
-    <!-- Achievements Section -->
     <section id="achievements">
         <h2 class="section-title">Key Achievements</h2>
         <div class="achievements-grid">
@@ -552,14 +909,12 @@
         </div>
     </section>
 
-    <!-- REFERENCES SECTION -->
     <section id="references">
         <h2 class="section-title">Professional References</h2>
-        <p style="margin-bottom: 30px; color: #555;">These individuals have kindly agreed to provide professional references. Contact them directly for verification of my skills, work ethic, and graduate potential. Click any card to view a reference letter template.</p>
-        
+        <p style="margin-bottom: 24px; color: #555; font-size: 0.95rem;">These individuals have kindly agreed to provide professional references. Contact them directly for verification of my skills, work ethic, and graduate potential. Click any card to view a reference letter template.</p>
+
         <div class="references-grid">
-            <!-- Reference 1 - Finance Internship Manager -->
-            <div class="reference-card">
+            <div class="reference-card" onclick="openRefModal('Julio Ortega')">
                 <div class="ref-name">Julio Ortega</div>
                 <div class="ref-title">Manager</div>
                 <div class="ref-org">Qabas Consulting & Training (Finance Internship)</div>
@@ -567,11 +922,10 @@
                     <a href="mailto:jj@qbs.ly">jj@qbs.ly</a>
                 </div>
                 <div class="ref-type">Professional Reference (Internship Manager)</div>
-                <p style="margin-top: 12px; font-size: 0.85rem; color: #555;">Julio supervised my finance internship where I worked with Excel-based data and reports, coordinated remote activities, and managed multiple tasks with accuracy.</p>
+                <p style="margin-top: 10px; font-size: 0.85rem; color: #555;">Julio supervised my finance internship where I worked with Excel-based data and reports, coordinated remote activities, and managed multiple tasks with accuracy.</p>
             </div>
 
-            <!-- Reference 2 - Lancaster Marketplace Manager -->
-            <div class="reference-card">
+            <div class="reference-card" onclick="openRefModal('Jack Shiers')">
                 <div class="ref-name">Jack Shiers</div>
                 <div class="ref-title">Manager</div>
                 <div class="ref-org">Lancaster Marketplace, Lancaster University</div>
@@ -579,11 +933,10 @@
                     <a href="mailto:j.shiers@lancaster.ac.uk">j.shiers@lancaster.ac.uk</a>
                 </div>
                 <div class="ref-type">Professional Reference (Current Manager)</div>
-                <p style="margin-top: 12px; font-size: 0.85rem; color: #555;">Jack manages my Food & Beverage Assistant role, where I develop customer service, teamwork, and problem-solving skills in a fast-paced environment.</p>
+                <p style="margin-top: 10px; font-size: 0.85rem; color: #555;">Jack manages my Food & Beverage Assistant role, where I develop customer service, teamwork, and problem-solving skills in a fast-paced environment.</p>
             </div>
 
-            <!-- Reference 3 - Lancaster Barkers Manager -->
-            <div class="reference-card">
+            <div class="reference-card" onclick="openRefModal('Jonathon Wray')">
                 <div class="ref-name">Jonathon Wray</div>
                 <div class="ref-title">Manager</div>
                 <div class="ref-org">Lancaster Barkers, Cartmel - Lancaster University</div>
@@ -591,11 +944,10 @@
                     <a href="mailto:j.d.wray@lancaster.ac.uk">j.d.wray@lancaster.ac.uk</a>
                 </div>
                 <div class="ref-type">Professional Reference (Current Manager)</div>
-                <p style="margin-top: 12px; font-size: 0.85rem; color: #555;">Jonathon oversees my work at Lancaster Barkers, where I demonstrate reliability, organisation, and effective communication under pressure.</p>
+                <p style="margin-top: 10px; font-size: 0.85rem; color: #555;">Jonathon oversees my work at Lancaster Barkers, where I demonstrate reliability, organisation, and effective communication under pressure.</p>
             </div>
 
-            <!-- Reference 4 - Previous Hospitality Manager (Joyinn) -->
-            <div class="reference-card">
+            <div class="reference-card" onclick="openRefModal('Benny Ng')">
                 <div class="ref-name">Benny Ng</div>
                 <div class="ref-title">Manager</div>
                 <div class="ref-org">The Joyinn, Belfast</div>
@@ -603,11 +955,10 @@
                     <a href="mailto:bennyjoyinn@yahoo.com.hk">bennyjoyinn@yahoo.com.hk</a>
                 </div>
                 <div class="ref-type">Professional Reference (Former Manager)</div>
-                <p style="margin-top: 12px; font-size: 0.85rem; color: #555;">Benny managed my bartender role where I developed customer service, cash handling, and multitasking skills in a busy hospitality environment.</p>
+                <p style="margin-top: 10px; font-size: 0.85rem; color: #555;">Benny managed my bartender role where I developed customer service, cash handling, and multitasking skills in a busy hospitality environment.</p>
             </div>
 
-            <!-- Reference 5 - Academic Reference (A-Level Teacher/Tutor) -->
-            <div class="reference-card">
+            <div class="reference-card" onclick="openRefModal('Daniel McShane')">
                 <div class="ref-name">Daniel McShane</div>
                 <div class="ref-title">A-Level Teacher / Tutor</div>
                 <div class="ref-org">Campbell College Belfast</div>
@@ -615,11 +966,21 @@
                     <a href="mailto:dmcshane784@ccblearning.org.uk">dmcshane784@ccblearning.org.uk</a>
                 </div>
                 <div class="ref-type">Academic Reference (Former Teacher)</div>
-                <p style="margin-top: 12px; font-size: 0.85rem; color: #555;">Daniel taught me at Campbell College and can speak to my academic abilities, discipline, and leadership as a Student Prefect and Head Ambassador.</p>
+                <p style="margin-top: 10px; font-size: 0.85rem; color: #555;">Daniel taught me at Campbell College and can speak to my academic abilities, discipline, and leadership as a Student Prefect and Head Ambassador.</p>
             </div>
 
-            <!-- Reference 6 - Table Tennis Coach -->
-            <div class="reference-card">
+            <div class="reference-card" onclick="openRefModal('Marcos Lucio')">
+                <div class="ref-name">Marcos Lucio</div>
+                <div class="ref-title">Former A Team Captain</div>
+                <div class="ref-org">Lancaster University Table Tennis</div>
+                <div class="ref-contact">
+                    <a href="mailto:lucioceby@gmail.com">lucioceby@gmail.com</a>
+                </div>
+                <div class="ref-type">Leadership Reference (Captain)</div>
+                <p style="margin-top: 10px; font-size: 0.85rem; color: #555;">Marcos captained me at Lancaster University Table Tennis and can speak to my dedication, adaptability, emotional intelligence, and critical thinking under pressure.</p>
+            </div>
+
+            <div class="reference-card" onclick="openRefModal('Neil Magrath')">
                 <div class="ref-name">Neil Magrath</div>
                 <div class="ref-title">Coach</div>
                 <div class="ref-org">Glenburn Table Tennis Club</div>
@@ -627,11 +988,10 @@
                     <a href="mailto:neil.magrath@glenburntt.com">neil.magrath@glenburntt.com</a>
                 </div>
                 <div class="ref-type">Coach Reference</div>
-                <p style="margin-top: 12px; font-size: 0.85rem; color: #555;">Neil coached me at Glenburn Table Tennis, where I developed discipline, focus, and teamwork as part of the 2025 U21A Interprovincial Championship-winning Ulster Team.</p>
+                <p style="margin-top: 10px; font-size: 0.85rem; color: #555;">Neil coached me at Glenburn Table Tennis, where I developed discipline, focus, and teamwork as part of the 2025 U21A Interprovincial Championship-winning Ulster Team.</p>
             </div>
 
-            <!-- Reference 7 - Librarian, Campbell College -->
-            <div class="reference-card">
+            <div class="reference-card" onclick="openRefModal('Cath Skipper')">
                 <div class="ref-name">Cath Skipper</div>
                 <div class="ref-title">Librarian</div>
                 <div class="ref-org">Campbell College Belfast</div>
@@ -639,11 +999,10 @@
                     <a href="mailto:c.skipper@campbellcollege.co.uk">c.skipper@campbellcollege.co.uk</a>
                 </div>
                 <div class="ref-type">Academic Reference</div>
-                <p style="margin-top: 12px; font-size: 0.85rem; color: #555;">Cath supervised me during my time at Campbell College, where I demonstrated responsibility, organisation, and strong communication skills as a Student Prefect and Head Ambassador.</p>
+                <p style="margin-top: 10px; font-size: 0.85rem; color: #555;">Cath supervised me during my time at Campbell College, where I demonstrated responsibility, organisation, and strong communication skills as a Student Prefect and Head Ambassador.</p>
             </div>
 
-            <!-- Reference 8 - Teacher, Campbell College -->
-            <div class="reference-card">
+            <div class="reference-card" onclick="openRefModal('Margaret Debbadi')">
                 <div class="ref-name">Margaret Debbadi</div>
                 <div class="ref-title">Teacher</div>
                 <div class="ref-org">Campbell College Belfast</div>
@@ -651,11 +1010,10 @@
                     <a href="mailto:m.debbadi@campbellcollege.co.uk">m.debbadi@campbellcollege.co.uk</a>
                 </div>
                 <div class="ref-type">Academic Reference</div>
-                <p style="margin-top: 12px; font-size: 0.85rem; color: #555;">Margaret taught me at Campbell College and can speak to my academic dedication, analytical thinking, and leadership qualities.</p>
+                <p style="margin-top: 10px; font-size: 0.85rem; color: #555;">Margaret taught me at Campbell College and can speak to my academic dedication, analytical thinking, and leadership qualities.</p>
             </div>
 
-            <!-- Reference 9 - University Mentor -->
-            <div class="reference-card">
+            <div class="reference-card" onclick="openRefModal('Andrew Muchall')">
                 <div class="ref-name">Andrew Muchall</div>
                 <div class="ref-title">University Mentor</div>
                 <div class="ref-org">Lancaster University</div>
@@ -663,11 +1021,11 @@
                     <a href="mailto:a.muchall@lancaster.ac.uk">a.muchall@lancaster.ac.uk</a>
                 </div>
                 <div class="ref-type">Mentor Reference</div>
-                <p style="margin-top: 12px; font-size: 0.85rem; color: #555;">Andrew mentors me at Lancaster University, supporting my academic and professional development in Management and Information Technology.</p>
+                <p style="margin-top: 10px; font-size: 0.85rem; color: #555;">Andrew mentors me at Lancaster University, supporting my academic and professional development in Management and Information Technology.</p>
             </div>
         </div>
 
-        <p style="margin-top: 30px; font-size: 0.85rem; color: #666; background: #e8f0f7; padding: 12px; border-radius: 8px;">
+        <p style="margin-top: 28px; font-size: 0.85rem; color: #666; background: #e8f0f7; padding: 14px; border-radius: 8px;">
         <strong>Note to Employers:</strong> All references listed above have given prior consent. Please contact them during business hours. Reference letters are available upon request.
         </p>
     </section>
@@ -683,222 +1041,158 @@
     </div>
 </footer>
 
-<!-- Back to Top Button -->
 <a href="#" id="backToTop" title="Back to Top">↑</a>
 
-<!-- Modal Popup -->
 <div id="referenceModal" class="modal">
     <div class="modal-content">
         <div class="modal-header">
             <h3 id="modalRefName">Reference Letter</h3>
-            <span class="close-modal">&times;</span>
+            <span class="close-modal" onclick="closeRefModal()">&times;</span>
         </div>
         <div class="modal-body" id="modalBody">
-            <!-- Dynamic content will appear here -->
         </div>
     </div>
 </div>
 
 <script>
-    // Reference letter content for each person (EMPTY - ready for real letters)
     const referenceLetters = {
         'Julio Ortega': {
             title: 'Finance Internship Manager',
-            letter: `[Reference letter from Julio Ortega will appear here once received]
-
-Dear Hiring Team,
-
-
-
-
-
-
-Yours sincerely,
-Julio Ortega
-Manager, Qabas Consulting & Training`
+            letter: `[Reference letter from Julio Ortega will appear here once received]`
         },
         'Jack Shiers': {
             title: 'Food & Beverage Manager',
-            letter: `[Reference letter from Jack Shiers will appear here once received]
-
-Dear Hiring Team,
-
-
-
-
-
-
-Best regards,
-Jack Shiers
-Manager, Lancaster Marketplace`
+            letter: `[Reference letter from Jack Shiers will appear here once received]`
         },
         'Jonathon Wray': {
             title: 'Food & Beverage Manager',
-            letter: `[Reference letter from Jonathon Wray will appear here once received]
-
-Dear Hiring Team,
-
-
-
-
-
-
-Yours sincerely,
-Jonathon Wray
-Manager, Lancaster Barkers`
+            letter: `[Reference letter from Jonathon Wray will appear here once received]`
         },
         'Benny Ng': {
             title: 'Former Manager, The Joyinn',
-            letter: `[Reference letter from Benny Ng will appear here once received]
+            letter: `To Whom It May Concern,
 
-Dear Hiring Team,
+I am pleased to provide this reference for Dominic Ng, who has worked at The Joyinn, Belfast, for over four years. During this time, I have had the opportunity to observe his work ethic, customer service skills, and ability to handle pressure in a busy hospitality environment.
 
+Dominic started as a bartender and quickly became one of our most trusted team members. In a fast-paced bar setting, he consistently demonstrated:
 
+- Excellent Customer Service: Dominic has a natural ability to connect with customers. He is friendly, professional, and always ensures guests leave satisfied. I have received numerous compliments from customers about his service.
 
+- Cash Handling & Accuracy: Dominic handled cash transactions accurately and responsibly. I never had to worry about discrepancies or issues with his till at the end of shifts.
 
+- Multitasking Under Pressure: During peak hours, Dominic managed multiple drink orders simultaneously while maintaining composure and quality. He thrives in high-pressure environments.
 
+- Reliability & Trustworthiness: Over four years, Dominic never let me down. He was always punctual, rarely missed shifts, and took on extra responsibilities when needed. He is someone I could always count on.
 
-Warm regards,
+- Teamwork & Communication: Dominic worked well with other team members and communicated effectively during busy service periods. He is a natural team player.
+
+Working with Dominic has been a pleasure. His dedication, honesty, and strong work ethic are qualities that will serve him well in any career, particularly in finance where attention to detail and reliability are paramount.
+
+I am confident that Dominic will be a valuable asset to any organisation. I highly recommend him for any graduate role or internship he pursues.
+
+Please feel free to contact me if you require further information.
+
+Yours sincerely,
+
 Benny Ng
-Former Manager, The Joyinn`
+Former Manager, The Joyinn
+bennyjoyinn@yahoo.com.hk`
         },
         'Daniel McShane': {
             title: 'A-Level Teacher / Tutor',
-            letter: `[Reference letter from Daniel McShane will appear here once received]
-
-Dear Hiring Team,
-
-
-
-
-
-
-Yours faithfully,
-Daniel McShane
-A-Level Teacher / Tutor
-Campbell College Belfast`
+            letter: `[Reference letter from Daniel McShane will appear here once received]`
         },
         'Neil Magrath': {
             title: 'Coach, Glenburn Table Tennis',
-            letter: `[Reference letter from Neil Magrath will appear here once received]
-
-Dear Hiring Team,
-
-
-
-
-
-
-Yours sincerely,
-Neil Magrath
-Coach, Glenburn Table Tennis Club`
+            letter: `[Reference letter from Neil Magrath will appear here once received]`
         },
         'Cath Skipper': {
             title: 'Librarian, Campbell College',
-            letter: `[Reference letter from Cath Skipper will appear here once received]
-
-Dear Hiring Team,
-
-
-
-
-
-
-Yours sincerely,
-Cath Skipper
-Librarian, Campbell College Belfast`
+            letter: `[Reference letter from Cath Skipper will appear here once received]`
         },
         'Margaret Debbadi': {
             title: 'Teacher, Campbell College',
-            letter: `[Reference letter from Margaret Debbadi will appear here once received]
-
-Dear Hiring Team,
-
-
-
-
-
-
-Yours sincerely,
-Margaret Debbadi
-Teacher, Campbell College Belfast`
+            letter: `[Reference letter from Margaret Debbadi will appear here once received]`
         },
         'Andrew Muchall': {
             title: 'University Mentor',
-            letter: `[Reference letter from Andrew Muchall will appear here once received]
+            letter: `[Reference letter from Andrew Muchall will appear here once received]`
+        },
+        'Marcos Lucio': {
+            title: 'Former Table Tennis A Team Captain',
+            letter: `To Whom It May Concern,
 
-Dear Hiring Team,
+I am delighted to write this reference for Dominic. I had the pleasure of captaining during our time on the Lancaster University Table Tennis A Team. As the captain, part of my role was to observe how individuals managed pressure, worked within the team, and maintained discipline. Dominic excelled in every one of these areas.
 
+Dominic's dedication to the sport is undeniable, having represented Northern Ireland. He brought an elite-level work ethic and standard to our university squad. During our competitive seasons, he demonstrated a specific set of core strengths that will make him a tremendous asset to any professional organisation:
 
+- Exceptional Dedication & Reliability: Dominic's commitment to the team was absolute. He was always the first to raise his hand to play, showing zero hesitation even for away fixtures that required traveling over three hours each way. Playing the second-most matches for the entire team, only behind me, the captain. His level of dependability and willingness to go the extra mile is rare and speaks volumes about his work ethic.
 
+- Smooth Adaptability and Cooperation: Joining an established team while moving to university in a different county and being independent for the first time can be more than challenging, but Dominic adapted seamlessly. He is someone who fits in well with others and knows how to become a part of something quickly. He is cooperative and approachable, forming a core pillar of our team.
 
+- Emotional Intelligence and Understanding of His Role: Dominic has high emotional intelligence in that he is aware of himself. He knew his role on the team and could tell when he needed to lead and when to work alongside the rest of the team.
 
+- Critical Thinking in High Pressurised Conditions: High-level table tennis is very quick and mental as one needs the ability to analyse the tactics of the opponent and adapt their own tactics under pressure. Dominic had the ability to think critically in high-pressure situations, which is exactly what you need in business.
 
-Yours sincerely,
-Andrew Muchall
-Mentor, Lancaster University`
+Beyond his individual performance, I want to highlight his contribution to the team's overall success. Dominic was not just a reliable player; he was someone who actively contributed to the team's morale and cohesion. He understood that individual success meant nothing without the team performing well together. He was the type of player who would stay after practice to help newer members improve their technique, and he was always available to discuss strategy or offer encouragement.
+
+One moment that stands out was during a crucial match where we were trailing. Dominic stepped up, not just with his performance, but by rallying the team and reminding us of our strengths. His ability to keep the team focused and motivated under pressure was invaluable. That match turned out to be one of our best wins of the season.
+
+Dominic possesses a rare combination of elite discipline, genuine humility, and a collaborative mindset. He is not someone who seeks the spotlight, but someone who works tirelessly to ensure the team succeeds. The same dedication and adaptability he brought to Lancaster University Table Tennis will undoubtedly make him an invaluable, highly reliable asset to your team.
+
+I give him my highest recommendation.
+
+Sincerely,
+
+Marcos Lucio
+Former Table Tennis A Team Captain, Lancaster University`
         }
     };
 
-    // Get modal elements
-    const modal = document.getElementById('referenceModal');
-    const closeBtn = document.querySelector('.close-modal');
-    const modalRefName = document.getElementById('modalRefName');
-    const modalBody = document.getElementById('modalBody');
+    function openRefModal(name) {
+        const letterData = referenceLetters[name];
+        if (letterData) {
+            document.getElementById('modalRefName').textContent = 'Reference Letter: ' + name;
+            document.getElementById('modalBody').innerHTML = `
+                <h4>${letterData.title}</h4>
+                <p style="white-space: pre-line;">${letterData.letter}</p>
+                <div class="signature">
+                    <strong>Note to Employers:</strong> ${name === 'Benny Ng' || name === 'Marcos Lucio' ? 'This is a genuine reference letter. Please contact the referee directly for verification.' : 'This is a template. Please contact the referee directly for a verified reference letter.'}
+                </div>
+            `;
+            document.getElementById('referenceModal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+    }
 
-    // Add click handlers to all reference cards
-    const referenceCards = document.querySelectorAll('.reference-card');
-    referenceCards.forEach(card => {
-        card.addEventListener('click', () => {
-            const nameElement = card.querySelector('.ref-name');
-            if (nameElement) {
-                const name = nameElement.textContent.trim();
-                const letterData = referenceLetters[name];
-                
-                if (letterData) {
-                    modalRefName.textContent = `Reference Letter: ${name}`;
-                    modalBody.innerHTML = `
-                        <h4>${letterData.title}</h4>
-                        <p style="white-space: pre-line; font-family: inherit;">${letterData.letter}</p>
-                        <div class="signature">
-                            <strong>Note to Employers:</strong> This is a template. Please contact the referee directly for a verified reference letter.
-                        </div>
-                    `;
-                    modal.style.display = 'flex';
-                }
-            }
-        });
-    });
+    function closeRefModal() {
+        document.getElementById('referenceModal').style.display = 'none';
+        document.body.style.overflow = '';
+    }
 
-    // Close modal when clicking X
-    closeBtn.addEventListener('click', () => {
-        modal.style.display = 'none';
-    });
-
-    // Close modal when clicking outside the content
-    window.addEventListener('click', (event) => {
-        if (event.target === modal) {
-            modal.style.display = 'none';
+    window.addEventListener('click', function(e) {
+        if (e.target === document.getElementById('referenceModal')) {
+            closeRefModal();
         }
     });
 
-    // Back to Top Button Logic
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeRefModal();
+        }
+    });
+
     const backToTop = document.getElementById('backToTop');
-    
-    window.addEventListener('scroll', () => {
+    window.addEventListener('scroll', function() {
         if (window.scrollY > 300) {
             backToTop.classList.add('show');
         } else {
             backToTop.classList.remove('show');
         }
     });
-
-    backToTop.addEventListener('click', (e) => {
+    backToTop.addEventListener('click', function(e) {
         e.preventDefault();
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 </script>
 
