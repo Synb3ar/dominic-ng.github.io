@@ -7,6 +7,52 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
 
     <style>
+        /* ============================================
+           CSS VARIABLES (Light & Dark Themes)
+           ============================================ */
+        :root {
+            --bg-color: #f8f9fa;
+            --text-color: #1e293b;
+            --card-bg: #ffffff;
+            --border-color: #e2e8f0;
+            --header-bg: #0a2540;
+            --header-text: #ffffff;
+            --accent: #0052cc;
+            --accent-light: #4a9eff;
+            --stat-bg: #ffffff;
+            --timeline-line: #0052cc;
+            --timeline-dot: #0052cc;
+            --timeline-card: #ffffff;
+            --progress-bg: #e2e8f0;
+            --testimonial-bg: #eef2ff;
+            --testimonial-text: #0a2540;
+            --shadow: rgba(0,0,0,0.05);
+            --shadow-hover: rgba(0,82,204,0.1);
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #0f172a;
+            --text-color: #e2e8f0;
+            --card-bg: #1e293b;
+            --border-color: #334155;
+            --header-bg: #020617;
+            --header-text: #ffffff;
+            --accent: #4a9eff;
+            --accent-light: #60a5fa;
+            --stat-bg: #1e293b;
+            --timeline-line: #4a9eff;
+            --timeline-dot: #4a9eff;
+            --timeline-card: #1e293b;
+            --progress-bg: #334155;
+            --testimonial-bg: #1e293b;
+            --testimonial-text: #e2e8f0;
+            --shadow: rgba(0,0,0,0.2);
+            --shadow-hover: rgba(74,158,255,0.15);
+        }
+
+        /* ============================================
+           BASE STYLES
+           ============================================ */
         * {
             margin: 0;
             padding: 0;
@@ -16,10 +62,11 @@
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             line-height: 1.6;
-            color: #1e293b;
-            background-color: #f8f9fa;
+            color: var(--text-color);
+            background-color: var(--bg-color);
             scroll-behavior: smooth;
             -webkit-font-smoothing: antialiased;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         .container {
@@ -28,14 +75,18 @@
             padding: 0 20px;
         }
 
+        /* ============================================
+           HEADER
+           ============================================ */
         header {
-            background-color: #0a2540;
-            color: white;
+            background-color: var(--header-bg);
+            color: var(--header-text);
             padding: 16px 0;
             position: sticky;
             top: 0;
             z-index: 100;
             box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            transition: background-color 0.3s ease;
         }
 
         .header-flex {
@@ -53,18 +104,19 @@
         }
 
         .logo span {
-            color: #4a9eff;
+            color: var(--accent-light);
             font-weight: 400;
         }
 
         nav {
             display: flex;
             flex-wrap: wrap;
+            align-items: center;
             gap: 8px 16px;
         }
 
         nav a {
-            color: white;
+            color: var(--header-text);
             text-decoration: none;
             font-weight: 500;
             font-size: 0.9rem;
@@ -73,15 +125,39 @@
         }
 
         nav a:hover {
-            color: #4a9eff;
+            color: var(--accent-light);
         }
 
+        .theme-toggle {
+            background: none;
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.3s;
+        }
+
+        .theme-toggle:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(255,255,255,0.4);
+        }
+
+        /* ============================================
+           HERO
+           ============================================ */
         .hero {
             background: linear-gradient(135deg, #0a2540 0%, #1a4b6e 100%);
             color: white;
             padding: 50px 0 60px;
             text-align: center;
             animation: fadeIn 0.8s ease-out;
+            transition: background 0.3s ease;
+        }
+
+        [data-theme="dark"] .hero {
+            background: linear-gradient(135deg, #020617 0%, #0f172a 100%);
         }
 
         @keyframes fadeIn {
@@ -93,7 +169,7 @@
             font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 3px;
-            color: #4a9eff;
+            color: var(--accent-light);
             margin-bottom: 12px;
             font-weight: 600;
         }
@@ -107,7 +183,7 @@
 
         .graduation-year {
             font-size: 1rem;
-            color: #4a9eff;
+            color: var(--accent-light);
             margin-bottom: 16px;
         }
 
@@ -151,21 +227,49 @@
         }
 
         .hire-button {
-            background-color: #0052cc;
+            background-color: var(--accent);
         }
 
         .hire-button:hover {
             background-color: #003d99;
         }
 
+        [data-theme="dark"] .hire-button {
+            background-color: #2563eb;
+        }
+
+        [data-theme="dark"] .hire-button:hover {
+            background-color: #1d4ed8;
+        }
+
+        .cv-button {
+            background-color: #22c55e;
+        }
+
+        .cv-button:hover {
+            background-color: #16a34a;
+        }
+
+        [data-theme="dark"] .cv-button {
+            background-color: #22c55e;
+        }
+
+        [data-theme="dark"] .cv-button:hover {
+            background-color: #16a34a;
+        }
+
+        /* ============================================
+           STATS
+           ============================================ */
         .stats-section {
             display: flex;
             justify-content: center;
             gap: 40px;
             flex-wrap: wrap;
             padding: 30px 20px;
-            background-color: white;
-            border-bottom: 1px solid #e2e8f0;
+            background-color: var(--stat-bg);
+            border-bottom: 1px solid var(--border-color);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
         }
 
         .stat-item {
@@ -175,7 +279,8 @@
         .stat-number {
             font-size: 1.8rem;
             font-weight: 700;
-            color: #0a2540;
+            color: var(--text-color);
+            transition: color 0.3s ease;
         }
 
         .stat-label {
@@ -183,29 +288,136 @@
             color: #64748b;
         }
 
+        /* ============================================
+           TIMELINE
+           ============================================ */
+        .timeline-section {
+            padding: 60px 0 50px;
+            background-color: var(--bg-color);
+            transition: background-color 0.3s ease;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 3px;
+            height: 100%;
+            background: var(--timeline-line);
+            border-radius: 3px;
+        }
+
+        .timeline-item {
+            display: flex;
+            justify-content: flex-end;
+            padding: 10px 0;
+            position: relative;
+            width: 50%;
+        }
+
+        .timeline-item:nth-child(odd) {
+            padding-right: 40px;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            margin-left: 50%;
+            padding-left: 40px;
+            text-align: left;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background: var(--timeline-dot);
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+            border: 3px solid var(--bg-color);
+            box-shadow: 0 0 0 3px var(--timeline-dot);
+            transition: background 0.3s ease, border-color 0.3s ease;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-dot {
+            right: -8px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-dot {
+            left: -8px;
+        }
+
+        .timeline-content {
+            background: var(--timeline-card);
+            padding: 16px 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 2px 8px var(--shadow);
+            transition: all 0.3s ease;
+            max-width: 400px;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px var(--shadow-hover);
+        }
+
+        .timeline-year {
+            font-weight: 700;
+            color: var(--accent);
+            font-size: 0.85rem;
+        }
+
+        .timeline-title {
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: var(--text-color);
+        }
+
+        .timeline-sub {
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+
+        /* ============================================
+           TESTIMONIAL
+           ============================================ */
         .testimonial {
-            background-color: #eef2ff;
+            background-color: var(--testimonial-bg);
             padding: 24px;
             border-radius: 12px;
             margin: 30px 0;
             text-align: center;
+            transition: background-color 0.3s ease;
         }
 
         .testimonial p {
             font-style: italic;
-            color: #0a2540;
+            color: var(--testimonial-text);
             font-size: 1rem;
             margin-bottom: 10px;
+            transition: color 0.3s ease;
         }
 
         .testimonial-author {
             font-weight: 600;
             margin-top: 10px;
+            color: var(--text-color);
         }
 
+        /* ============================================
+           SECTIONS
+           ============================================ */
         section {
             padding: 48px 0 52px;
-            border-bottom: 1px solid #e2e8f0;
+            border-bottom: 1px solid var(--border-color);
+            transition: border-color 0.3s ease;
         }
 
         .section-title {
@@ -214,7 +426,8 @@
             position: relative;
             display: inline-block;
             font-weight: 600;
-            color: #0a2540;
+            color: var(--text-color);
+            transition: color 0.3s ease;
         }
 
         .section-title:after {
@@ -224,7 +437,7 @@
             left: 0;
             width: 40px;
             height: 3px;
-            background-color: #0052cc;
+            background-color: var(--accent);
         }
 
         .about-content {
@@ -239,46 +452,230 @@
 
         .about-text p {
             margin-bottom: 16px;
-            color: #334155;
+            color: var(--text-color);
             font-size: 0.95rem;
+            transition: color 0.3s ease;
         }
 
         .expertise {
             flex: 1;
-            background-color: white;
-            padding: 20px;
+            background-color: var(--card-bg);
+            padding: 24px;
             border-radius: 12px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-            border: 1px solid #e2e8f0;
+            box-shadow: 0 1px 3px var(--shadow);
+            border: 1px solid var(--border-color);
+            transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
         .expertise h3 {
-            margin-bottom: 16px;
-            color: #0a2540;
+            margin-bottom: 18px;
+            color: var(--text-color);
             font-weight: 600;
             font-size: 1rem;
+            transition: color 0.3s ease;
         }
 
-        .expertise ul {
-            list-style: none;
+        .skill-item {
+            margin-bottom: 14px;
         }
 
-        .expertise li {
-            margin-bottom: 10px;
-            padding-left: 22px;
+        .skill-item .skill-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: var(--text-color);
+            margin-bottom: 4px;
+            transition: color 0.3s ease;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: var(--progress-bg);
+            border-radius: 3px;
+            overflow: hidden;
+            transition: background 0.3s ease;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 3px;
+            background: var(--accent);
+            width: 0%;
+            transition: width 1.2s ease-out;
+        }
+
+        /* ============================================
+           PROJECT GALLERY
+           ============================================ */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 20px;
+        }
+
+        .gallery-item {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
             position: relative;
-            color: #334155;
-            font-size: 0.9rem;
         }
 
-        .expertise li:before {
-            content: "—";
-            color: #0052cc;
-            position: absolute;
-            left: 0;
+        .gallery-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px var(--shadow-hover);
+            border-color: var(--accent);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.02);
+        }
+
+        .gallery-item .gallery-overlay {
+            padding: 16px 20px;
+            background: var(--card-bg);
+            transition: background 0.3s ease;
+        }
+
+        .gallery-item .gallery-overlay h3 {
+            font-size: 1rem;
             font-weight: 600;
+            color: var(--text-color);
+            margin-bottom: 4px;
+            transition: color 0.3s ease;
         }
 
+        .gallery-item .gallery-overlay p {
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+
+        .gallery-item .click-hint {
+            position: absolute;
+            bottom: 70px;
+            right: 16px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            font-size: 0.7rem;
+            padding: 4px 12px;
+            border-radius: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .click-hint {
+            opacity: 1;
+        }
+
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.85);
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            animation: lightboxFadeIn 0.3s ease;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        @keyframes lightboxFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .lightbox-content {
+            max-width: 900px;
+            width: 100%;
+            max-height: 90vh;
+            background: var(--card-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            position: relative;
+            animation: lightboxSlideIn 0.4s ease;
+        }
+
+        @keyframes lightboxSlideIn {
+            from { opacity: 0; transform: scale(0.95) translateY(20px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .lightbox-content img {
+            width: 100%;
+            max-height: 55vh;
+            object-fit: contain;
+            display: block;
+            background: #000;
+        }
+
+        .lightbox-info {
+            padding: 20px 24px;
+            background: var(--card-bg);
+            transition: background 0.3s ease;
+        }
+
+        .lightbox-info h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-color);
+            margin-bottom: 4px;
+            transition: color 0.3s ease;
+        }
+
+        .lightbox-info p {
+            font-size: 0.95rem;
+            color: #64748b;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+            transition: color 0.2s;
+            z-index: 10;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+            background: rgba(0,0,0,0.3);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+        }
+
+        .lightbox-close:hover {
+            color: var(--accent-light);
+            background: rgba(0,0,0,0.5);
+        }
+
+        /* ============================================
+           ACHIEVEMENTS
+           ============================================ */
         .achievements-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -287,29 +684,34 @@
         }
 
         .achievement-card {
-            background-color: white;
+            background-color: var(--card-bg);
             padding: 20px;
             border-radius: 12px;
-            border: 1px solid #e2e8f0;
-            transition: all 0.2s ease;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
             min-height: 100px;
         }
 
         .achievement-card:hover {
-            border-color: #cbd5e1;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border-color: var(--accent);
+            box-shadow: 0 8px 20px var(--shadow-hover);
+            transform: translateY(-2px);
         }
 
         .achievement-card p {
-            color: #334155;
+            color: var(--text-color);
             line-height: 1.5;
             font-size: 0.95rem;
+            transition: color 0.3s ease;
         }
 
         .achievement-card strong {
-            color: #0a2540;
+            color: var(--text-color);
         }
 
+        /* ============================================
+           REFERENCES
+           ============================================ */
         .references-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -317,30 +719,31 @@
         }
 
         .reference-card {
-            background-color: white;
+            background-color: var(--card-bg);
             border-radius: 12px;
             padding: 20px;
-            border: 1px solid #e2e8f0;
-            transition: all 0.2s ease;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
             cursor: pointer;
             min-height: 140px;
         }
 
         .reference-card:hover {
-            border-color: #0052cc;
+            border-color: var(--accent);
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0,82,204,0.1);
+            box-shadow: 0 8px 20px var(--shadow-hover);
         }
 
         .ref-name {
             font-size: 1.1rem;
             font-weight: 700;
-            color: #0a2540;
+            color: var(--text-color);
             margin-bottom: 4px;
+            transition: color 0.3s ease;
         }
 
         .ref-title {
-            color: #0052cc;
+            color: var(--accent);
             font-weight: 600;
             font-size: 0.8rem;
             margin-bottom: 4px;
@@ -356,20 +759,22 @@
 
         .ref-contact {
             font-size: 0.85rem;
-            color: #334155;
+            color: var(--text-color);
             margin-top: 10px;
             padding-top: 10px;
-            border-top: 1px solid #e2e8f0;
+            border-top: 1px solid var(--border-color);
             word-break: break-all;
+            transition: color 0.3s ease, border-color 0.3s ease;
         }
 
         .ref-contact a {
-            color: #0a2540;
+            color: var(--text-color);
             text-decoration: none;
+            transition: color 0.3s ease;
         }
 
         .ref-contact a:hover {
-            color: #0052cc;
+            color: var(--accent);
         }
 
         .ref-type {
@@ -379,20 +784,31 @@
             padding: 4px 10px;
             border-radius: 20px;
             margin-top: 10px;
-            color: #0052cc;
+            color: var(--accent);
             font-weight: 500;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
+        [data-theme="dark"] .ref-type {
+            background-color: #1e293b;
+            color: #60a5fa;
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
         footer {
-            background-color: #0a2540;
+            background-color: var(--header-bg);
             color: #94a3b8;
             text-align: center;
             padding: 28px 0;
             font-size: 0.85rem;
+            transition: background-color 0.3s ease;
         }
 
         footer p {
             margin-top: 6px;
+            color: #94a3b8;
         }
 
         footer p:first-child {
@@ -404,7 +820,7 @@
         }
 
         .social-links a {
-            color: #4a9eff;
+            color: var(--accent-light);
             text-decoration: none;
             margin: 0 10px;
             transition: color 0.3s;
@@ -416,6 +832,9 @@
             color: white;
         }
 
+        /* ============================================
+           MODAL
+           ============================================ */
         .modal {
             display: none;
             position: fixed;
@@ -431,7 +850,7 @@
         }
 
         .modal-content {
-            background-color: white;
+            background-color: var(--card-bg);
             margin: 0 auto;
             padding: 0;
             width: 100%;
@@ -441,6 +860,7 @@
             animation: modalFadeIn 0.3s ease;
             max-height: 90vh;
             overflow-y: auto;
+            transition: background-color 0.3s ease;
         }
 
         @keyframes modalFadeIn {
@@ -449,7 +869,7 @@
         }
 
         .modal-header {
-            background-color: #0a2540;
+            background-color: var(--header-bg);
             color: white;
             padding: 16px 20px;
             border-radius: 16px 16px 0 0;
@@ -459,12 +879,14 @@
             position: sticky;
             top: 0;
             z-index: 10;
+            transition: background-color 0.3s ease;
         }
 
         .modal-header h3 {
             margin: 0;
             font-weight: 600;
             font-size: 1.1rem;
+            color: white;
         }
 
         .close-modal {
@@ -474,32 +896,37 @@
             transition: color 0.2s;
             padding: 4px 8px;
             line-height: 1;
+            color: white;
         }
 
         .close-modal:hover {
-            color: #4a9eff;
+            color: var(--accent-light);
         }
 
         .modal-body {
             padding: 24px;
             line-height: 1.6;
-            color: #334155;
+            color: var(--text-color);
+            transition: color 0.3s ease;
         }
 
         .modal-body .signature {
             margin-top: 20px;
             padding-top: 16px;
-            border-top: 1px solid #e2e8f0;
+            border-top: 1px solid var(--border-color);
             font-style: italic;
             color: #64748b;
             font-size: 0.9rem;
         }
 
+        /* ============================================
+           BACK TO TOP
+           ============================================ */
         #backToTop {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background-color: #0a2540;
+            background-color: var(--header-bg);
             color: white;
             width: 48px;
             height: 48px;
@@ -526,11 +953,14 @@
         }
 
         #backToTop:hover {
-            background-color: #0052cc;
+            background-color: var(--accent);
             transform: translateY(-3px);
             box-shadow: 0 4px 15px rgba(0,82,204,0.3);
         }
 
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
         @media (max-width: 768px) {
             .header-flex {
                 flex-direction: column;
@@ -592,6 +1022,45 @@
                 font-size: 1.5rem;
             }
 
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 50px !important;
+                padding-right: 0 !important;
+                text-align: left !important;
+                margin-left: 0 !important;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-dot,
+            .timeline-item:nth-child(even) .timeline-dot {
+                left: 12px;
+                right: auto;
+            }
+
+            .timeline-content {
+                max-width: 100%;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 16px;
+            }
+
+            .gallery-item img {
+                height: 150px;
+            }
+
+            .lightbox {
+                padding: 16px;
+            }
+
+            .lightbox-content img {
+                max-height: 45vh;
+            }
+
             section {
                 padding: 36px 0 40px;
             }
@@ -618,11 +1087,6 @@
             .expertise {
                 order: -1;
                 padding: 16px;
-            }
-
-            .expertise li {
-                font-size: 0.88rem;
-                padding-left: 20px;
             }
 
             .achievements-grid {
@@ -709,6 +1173,28 @@
             }
         }
 
+        @media (max-width: 480px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-item img {
+                height: 180px;
+            }
+
+            .lightbox {
+                padding: 12px;
+            }
+
+            .lightbox-content img {
+                max-height: 40vh;
+            }
+
+            .lightbox-info {
+                padding: 14px 16px;
+            }
+        }
+
         @media (max-width: 400px) {
             .container {
                 padding: 0 14px;
@@ -762,22 +1248,35 @@
             .references-grid {
                 grid-template-columns: 1fr 1fr;
             }
+
+            .gallery-grid {
+                grid-template-columns: 1fr 1fr;
+            }
         }
     </style>
 </head>
 <body>
 
+<!-- ============================================
+     HEADER
+     ============================================ -->
 <header>
     <div class="container header-flex">
         <div class="logo">Dominic<span> Portfolio</span></div>
         <nav>
             <a href="#about">About</a>
+            <a href="#timeline">Timeline</a>
+            <a href="#projects">Projects</a>
             <a href="#achievements">Achievements</a>
             <a href="#references">References</a>
+            <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">Theme</button>
         </nav>
     </div>
 </header>
 
+<!-- ============================================
+     HERO SECTION
+     ============================================ -->
 <section class="hero">
     <div class="container">
         <div class="target-job">TARGET GRADUATE ROLE</div>
@@ -794,29 +1293,38 @@
             <a href="mailto:dominicng2006@gmail.com" class="linkedin-button hire-button">
                 Hire Me
             </a>
+            <a href="Dominic_Ng_AndrasHotels_CV.pdf" download class="linkedin-button cv-button">
+                Download CV
+            </a>
         </div>
     </div>
 </section>
 
-<div class="stats-section">
+<!-- ============================================
+     STATS SECTION
+     ============================================ -->
+<div class="stats-section" id="statsSection">
     <div class="stat-item">
-        <div class="stat-number">4+</div>
+        <div class="stat-number" data-target="4">0</div>
         <div class="stat-label">Years Experience</div>
     </div>
     <div class="stat-item">
-        <div class="stat-number">10</div>
+        <div class="stat-number" data-target="10">0</div>
         <div class="stat-label">Professional References</div>
     </div>
     <div class="stat-item">
-        <div class="stat-number">1</div>
+        <div class="stat-number" data-target="1">0</div>
         <div class="stat-label">Internships</div>
     </div>
     <div class="stat-item">
-        <div class="stat-number">4</div>
+        <div class="stat-number" data-target="4">0</div>
         <div class="stat-label">Excel Projects</div>
     </div>
 </div>
 
+<!-- ============================================
+     TESTIMONIAL
+     ============================================ -->
 <div class="container">
     <div class="testimonial">
         <p>"Dominic possesses a rare combination of elite discipline, genuine humility, and a collaborative mindset. The same dedication and adaptability he brought to Lancaster University Table Tennis will undoubtedly make him an invaluable asset to your team."</p>
@@ -825,6 +1333,84 @@
     </div>
 </div>
 
+<!-- ============================================
+     TIMELINE SECTION
+     ============================================ -->
+<div class="timeline-section" id="timeline">
+    <div class="container">
+        <h2 class="section-title">My Journey</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">2023</div>
+                    <div class="timeline-title">Campbell College Belfast</div>
+                    <div class="timeline-sub">A-Levels: BBC • Student Prefect & Head Ambassador</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">2023</div>
+                    <div class="timeline-title">Kainos Insight Programme</div>
+                    <div class="timeline-sub">Built a functional website with a 4-person team • Presented to Kainos professionals</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">2023</div>
+                    <div class="timeline-title">IBM Sustainability Programme</div>
+                    <div class="timeline-sub">Collaborated on an eco-friendly product pitch • Received positive feedback</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">2024-2026</div>
+                    <div class="timeline-title">Lancaster University</div>
+                    <div class="timeline-sub">BSc Management & IT • Predicted 2:1 • Table Tennis A Team</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">2025</div>
+                    <div class="timeline-title">Ulster Table Tennis Champion</div>
+                    <div class="timeline-sub">U21A Interprovincial Championship-winning Ulster Team</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">2026</div>
+                    <div class="timeline-title">Qabas Consulting & Training</div>
+                    <div class="timeline-sub">Finance Internship • Excel reporting • Remote coordination</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">2026</div>
+                    <div class="timeline-title">Goldman Sachs Virtual Experience</div>
+                    <div class="timeline-sub">Controllers Job Simulation • Forage Certificate</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">2027</div>
+                    <div class="timeline-title">Goal: Financial Analyst</div>
+                    <div class="timeline-sub">Targeting graduate roles in Corporate Finance, Financial Planning & Analysis</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+     ABOUT SECTION
+     ============================================ -->
 <div class="container">
     <section id="about">
         <h2 class="section-title">Professional Bio</h2>
@@ -837,17 +1423,86 @@
             </div>
             <div class="expertise">
                 <h3>Technical & Analytical Expertise</h3>
-                <ul>
-                    <li>Excel (PivotTables, Dashboards, Formulas)</li>
-                    <li>Financial Analysis & Reporting</li>
-                    <li>Data Analytics & Visualization</li>
-                    <li>Credit Risk & Bank Reconciliation</li>
-                    <li>HTML, CSS & Basic Web Development</li>
-                </ul>
+                <div class="skill-item">
+                    <div class="skill-label">
+                        <span>Excel (PivotTables, Dashboards, Formulas)</span>
+                        <span>85%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-width="85" style="width: 0%;"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-label">
+                        <span>Financial Analysis & Reporting</span>
+                        <span>75%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-width="75" style="width: 0%;"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-label">
+                        <span>Data Analytics & Visualization</span>
+                        <span>70%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-width="70" style="width: 0%;"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-label">
+                        <span>Credit Risk & Bank Reconciliation</span>
+                        <span>65%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-width="65" style="width: 0%;"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-label">
+                        <span>HTML, CSS & Basic Web Development</span>
+                        <span>60%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-width="60" style="width: 0%;"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- ============================================
+         PROJECT GALLERY SECTION
+     ============================================ -->
+    <section id="projects">
+        <h2 class="section-title">Project Gallery</h2>
+        <p style="margin-bottom: 24px; color: #64748b; font-size: 0.95rem;">Click any project to view it full-size. These dashboards showcase my Excel and data analysis capabilities.</p>
+
+        <div class="gallery-grid">
+            <div class="gallery-item" onclick="openLightbox('https://i.postimg.cc/nzGhWByY/dashboard-bank-jpg.jpg', 'Bank Reconciliation Report', 'Developed a bank reconciliation report in Excel to compare cashbook and bank statement transactions. Features: transaction matching, difference calculations, conditional formatting, summary metrics dashboard.')">
+                <img src="https://i.postimg.cc/nzGhWByY/dashboard-bank-jpg.jpg" alt="Bank Reconciliation Report">
+                <div class="gallery-overlay">
+                    <h3>Bank Reconciliation Report</h3>
+                    <p>Excel • Financial Reporting • Reconciliation</p>
+                </div>
+                <span class="click-hint">Click to view</span>
+            </div>
+
+            <div class="gallery-item" onclick="openLightbox('https://i.postimg.cc/xCMz1XWJ/dashboard-workforce-jpg.jpg', 'Workforce Retention Dashboard', 'Built an interactive Excel dashboard to analyse workforce distribution, employee tenure, and retention risk using HR data. Key insights: 52% concentration in Development, 71% Unknown terminations, 29% inactive employees.')">
+                <img src="https://i.postimg.cc/xCMz1XWJ/dashboard-workforce-jpg.jpg" alt="Workforce Retention Dashboard">
+                <div class="gallery-overlay">
+                    <h3>Workforce Retention Dashboard</h3>
+                    <p>Excel • PivotTables • HR Analytics</p>
+                </div>
+                <span class="click-hint">Click to view</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         ACHIEVEMENTS SECTION
+     ============================================ -->
     <section id="achievements">
         <h2 class="section-title">Key Achievements</h2>
         <div class="achievements-grid">
@@ -869,9 +1524,12 @@
         </div>
     </section>
 
+    <!-- ============================================
+         REFERENCES SECTION
+     ============================================ -->
     <section id="references">
         <h2 class="section-title">Professional References</h2>
-        <p style="margin-bottom: 24px; color: #555; font-size: 0.95rem;">These individuals have kindly agreed to provide professional references. Contact them directly for verification of my skills, work ethic, and graduate potential. Click any card to view a reference letter template.</p>
+        <p style="margin-bottom: 24px; color: #64748b; font-size: 0.95rem;">These individuals have kindly agreed to provide professional references. Contact them directly for verification of my skills, work ethic, and graduate potential. Click any card to view a reference letter template.</p>
 
         <div class="references-grid">
             <div class="reference-card" onclick="openRefModal('Julio Ortega')">
@@ -882,7 +1540,7 @@
                     <a href="mailto:jj@qbs.ly">jj@qbs.ly</a>
                 </div>
                 <div class="ref-type">Professional Reference (Internship Manager)</div>
-                <p style="margin-top: 10px; font-size: 0.85rem; color: #555;">Julio supervised my finance internship where I worked with Excel-based data and reports, coordinated remote activities, and managed multiple tasks with accuracy.</p>
+                <p style="margin-top: 10px; font-size: 0.85rem; color: #64748b;">Julio supervised my finance internship where I worked with Excel-based data and reports, coordinated remote activities, and managed multiple tasks with accuracy.</p>
             </div>
 
             <div class="reference-card" onclick="openRefModal('Jack Shiers')">
@@ -893,7 +1551,7 @@
                     <a href="mailto:j.shiers@lancaster.ac.uk">j.shiers@lancaster.ac.uk</a>
                 </div>
                 <div class="ref-type">Professional Reference (Current Manager)</div>
-                <p style="margin-top: 10px; font-size: 0.85rem; color: #555;">Jack manages my Food & Beverage Assistant role, where I develop customer service, teamwork, and problem-solving skills in a fast-paced environment.</p>
+                <p style="margin-top: 10px; font-size: 0.85rem; color: #64748b;">Jack manages my Food & Beverage Assistant role, where I develop customer service, teamwork, and problem-solving skills in a fast-paced environment.</p>
             </div>
 
             <div class="reference-card" onclick="openRefModal('Jonathon Wray')">
@@ -904,7 +1562,7 @@
                     <a href="mailto:j.d.wray@lancaster.ac.uk">j.d.wray@lancaster.ac.uk</a>
                 </div>
                 <div class="ref-type">Professional Reference (Current Manager)</div>
-                <p style="margin-top: 10px; font-size: 0.85rem; color: #555;">Jonathon oversees my work at Lancaster Barkers, where I demonstrate reliability, organisation, and effective communication under pressure.</p>
+                <p style="margin-top: 10px; font-size: 0.85rem; color: #64748b;">Jonathon oversees my work at Lancaster Barkers, where I demonstrate reliability, organisation, and effective communication under pressure.</p>
             </div>
 
             <div class="reference-card" onclick="openRefModal('Benny Ng')">
@@ -915,7 +1573,7 @@
                     <a href="mailto:bennyjoyinn@yahoo.com.hk">bennyjoyinn@yahoo.com.hk</a>
                 </div>
                 <div class="ref-type">Professional Reference (Former Manager)</div>
-                <p style="margin-top: 10px; font-size: 0.85rem; color: #555;">Benny managed my bartender role where I developed customer service, cash handling, and multitasking skills in a busy hospitality environment.</p>
+                <p style="margin-top: 10px; font-size: 0.85rem; color: #64748b;">Benny managed my bartender role where I developed customer service, cash handling, and multitasking skills in a busy hospitality environment.</p>
             </div>
 
             <div class="reference-card" onclick="openRefModal('Daniel McShane')">
@@ -926,7 +1584,7 @@
                     <a href="mailto:dmcshane784@ccblearning.org.uk">dmcshane784@ccblearning.org.uk</a>
                 </div>
                 <div class="ref-type">Academic Reference (Former Teacher)</div>
-                <p style="margin-top: 10px; font-size: 0.85rem; color: #555;">Daniel taught me at Campbell College and can speak to my academic abilities, discipline, and leadership as a Student Prefect and Head Ambassador.</p>
+                <p style="margin-top: 10px; font-size: 0.85rem; color: #64748b;">Daniel taught me at Campbell College and can speak to my academic abilities, discipline, and leadership as a Student Prefect and Head Ambassador.</p>
             </div>
 
             <div class="reference-card" onclick="openRefModal('Marcos Lucio')">
@@ -937,7 +1595,7 @@
                     <a href="mailto:lucioceby@gmail.com">lucioceby@gmail.com</a>
                 </div>
                 <div class="ref-type">Leadership Reference (Captain)</div>
-                <p style="margin-top: 10px; font-size: 0.85rem; color: #555;">Marcos captained me at Lancaster University Table Tennis and can speak to my dedication, adaptability, emotional intelligence, and critical thinking under pressure.</p>
+                <p style="margin-top: 10px; font-size: 0.85rem; color: #64748b;">Marcos captained me at Lancaster University Table Tennis and can speak to my dedication, adaptability, emotional intelligence, and critical thinking under pressure.</p>
             </div>
 
             <div class="reference-card" onclick="openRefModal('Neil Magrath')">
@@ -948,7 +1606,7 @@
                     <a href="mailto:neil.magrath@glenburntt.com">neil.magrath@glenburntt.com</a>
                 </div>
                 <div class="ref-type">Coach Reference</div>
-                <p style="margin-top: 10px; font-size: 0.85rem; color: #555;">Neil coached me at Glenburn Table Tennis, where I developed discipline, focus, and teamwork as part of the 2025 U21A Interprovincial Championship-winning Ulster Team.</p>
+                <p style="margin-top: 10px; font-size: 0.85rem; color: #64748b;">Neil coached me at Glenburn Table Tennis, where I developed discipline, focus, and teamwork as part of the 2025 U21A Interprovincial Championship-winning Ulster Team.</p>
             </div>
 
             <div class="reference-card" onclick="openRefModal('Cath Skipper')">
@@ -959,7 +1617,7 @@
                     <a href="mailto:c.skipper@campbellcollege.co.uk">c.skipper@campbellcollege.co.uk</a>
                 </div>
                 <div class="ref-type">Academic Reference</div>
-                <p style="margin-top: 10px; font-size: 0.85rem; color: #555;">Cath supervised me during my time at Campbell College, where I demonstrated responsibility, organisation, and strong communication skills as a Student Prefect and Head Ambassador.</p>
+                <p style="margin-top: 10px; font-size: 0.85rem; color: #64748b;">Cath supervised me during my time at Campbell College, where I demonstrated responsibility, organisation, and strong communication skills as a Student Prefect and Head Ambassador.</p>
             </div>
 
             <div class="reference-card" onclick="openRefModal('Margaret Debbadi')">
@@ -970,7 +1628,7 @@
                     <a href="mailto:m.debbadi@campbellcollege.co.uk">m.debbadi@campbellcollege.co.uk</a>
                 </div>
                 <div class="ref-type">Academic Reference</div>
-                <p style="margin-top: 10px; font-size: 0.85rem; color: #555;">Margaret taught me at Campbell College and can speak to my academic dedication, analytical thinking, and leadership qualities.</p>
+                <p style="margin-top: 10px; font-size: 0.85rem; color: #64748b;">Margaret taught me at Campbell College and can speak to my academic dedication, analytical thinking, and leadership qualities.</p>
             </div>
 
             <div class="reference-card" onclick="openRefModal('Andrew Muchall')">
@@ -981,16 +1639,19 @@
                     <a href="mailto:a.muchall@lancaster.ac.uk">a.muchall@lancaster.ac.uk</a>
                 </div>
                 <div class="ref-type">Mentor Reference</div>
-                <p style="margin-top: 10px; font-size: 0.85rem; color: #555;">Andrew mentors me at Lancaster University, supporting my academic and professional development in Management and Information Technology.</p>
+                <p style="margin-top: 10px; font-size: 0.85rem; color: #64748b;">Andrew mentors me at Lancaster University, supporting my academic and professional development in Management and Information Technology.</p>
             </div>
         </div>
 
-        <p style="margin-top: 28px; font-size: 0.85rem; color: #666; background: #e8f0f7; padding: 14px; border-radius: 8px;">
+        <p style="margin-top: 28px; font-size: 0.85rem; color: #64748b; background: var(--testimonial-bg); padding: 14px; border-radius: 8px; transition: background 0.3s ease;">
         <strong>Note to Employers:</strong> All references listed above have given prior consent. Please contact them during business hours. Reference letters are available upon request.
         </p>
     </section>
 </div>
 
+<!-- ============================================
+     FOOTER
+     ============================================ -->
 <footer>
     <div class="container">
         <p>&copy; 2026 Dominic Ng — Graduate Portfolio | Actively seeking Financial Analyst roles</p>
@@ -1003,6 +1664,9 @@
 
 <a href="#" id="backToTop" title="Back to Top">↑</a>
 
+<!-- ============================================
+     REFERENCE MODAL
+     ============================================ -->
 <div id="referenceModal" class="modal">
     <div class="modal-content">
         <div class="modal-header">
@@ -1014,7 +1678,24 @@
     </div>
 </div>
 
+<!-- ============================================
+     LIGHTBOX
+     ============================================ -->
+<div id="lightbox" class="lightbox" onclick="closeLightbox()">
+    <div class="lightbox-content" onclick="event.stopPropagation();">
+        <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+        <img id="lightboxImage" src="" alt="Project preview">
+        <div class="lightbox-info">
+            <h3 id="lightboxTitle">Project Title</h3>
+            <p id="lightboxDescription">Project description goes here.</p>
+        </div>
+    </div>
+</div>
+
 <script>
+    // ============================================
+    // REFERENCE LETTERS
+    // ============================================
     const referenceLetters = {
         'Julio Ortega': {
             title: 'Finance Internship Manager',
@@ -1083,50 +1764,215 @@ Former Table Tennis A Team Captain, Lancaster University`
         }
     };
 
+    // ============================================
+    // REFERENCE MODAL FUNCTIONS
+    // ============================================
     function openRefModal(name) {
         const letterData = referenceLetters[name];
-        if (letterData) {
-            document.getElementById('modalRefName').textContent = 'Reference Letter: ' + name;
-            document.getElementById('modalBody').innerHTML = `
+        const modal = document.getElementById('referenceModal');
+        const modalRefName = document.getElementById('modalRefName');
+        const modalBody = document.getElementById('modalBody');
+
+        if (letterData && modal) {
+            modalRefName.textContent = 'Reference Letter: ' + name;
+            modalBody.innerHTML = `
                 <h4>${letterData.title}</h4>
                 <p style="white-space: pre-line;">${letterData.letter}</p>
                 <div class="signature">
                     <strong>Note to Employers:</strong> This is a genuine reference letter. Please contact the referee directly for verification.
                 </div>
             `;
-            document.getElementById('referenceModal').style.display = 'flex';
+            modal.style.display = 'flex';
             document.body.style.overflow = 'hidden';
         }
     }
 
     function closeRefModal() {
-        document.getElementById('referenceModal').style.display = 'none';
-        document.body.style.overflow = '';
+        const modal = document.getElementById('referenceModal');
+        if (modal) {
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+        }
     }
 
-    window.addEventListener('click', function(e) {
-        if (e.target === document.getElementById('referenceModal')) {
-            closeRefModal();
-        }
-    });
+    // ============================================
+    // LIGHTBOX FUNCTIONS
+    // ============================================
+    function openLightbox(imageSrc, title, description) {
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.getElementById('lightboxImage');
+        const lightboxTitle = document.getElementById('lightboxTitle');
+        const lightboxDescription = document.getElementById('lightboxDescription');
 
+        if (lightbox && lightboxImage) {
+            lightboxImage.src = imageSrc;
+            lightboxTitle.textContent = title || 'Project';
+            lightboxDescription.textContent = description || '';
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+    }
+
+    function closeLightbox() {
+        const lightbox = document.getElementById('lightbox');
+        if (lightbox) {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    }
+
+    // Close lightbox with Escape key
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
+            closeLightbox();
             closeRefModal();
         }
     });
 
-    const backToTop = document.getElementById('backToTop');
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 300) {
-            backToTop.classList.add('show');
-        } else {
-            backToTop.classList.remove('show');
+    // Close modals by clicking outside
+    window.addEventListener('click', function(e) {
+        const modal = document.getElementById('referenceModal');
+        const lightbox = document.getElementById('lightbox');
+        if (e.target === modal) {
+            closeRefModal();
+        }
+        if (e.target === lightbox) {
+            closeLightbox();
         }
     });
-    backToTop.addEventListener('click', function(e) {
-        e.preventDefault();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // ============================================
+    // STATS COUNTER ANIMATION
+    // ============================================
+    document.addEventListener('DOMContentLoaded', function() {
+        const statsSection = document.getElementById('statsSection');
+        const statNumbers = document.querySelectorAll('.stat-number');
+        let statsAnimated = false;
+
+        function animateStats() {
+            if (statsAnimated) return;
+            statsAnimated = true;
+
+            statNumbers.forEach(stat => {
+                const target = parseInt(stat.getAttribute('data-target'));
+                const duration = 1500;
+                const startTime = performance.now();
+
+                function updateCounter(currentTime) {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const easedProgress = 1 - Math.pow(1 - progress, 3);
+                    const currentValue = Math.round(easedProgress * target);
+                    const displayValue = target <= 10 ? currentValue : currentValue.toFixed(1);
+                    stat.textContent = displayValue;
+
+                    if (progress < 1) {
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        stat.textContent = target;
+                        if (target === 4) {
+                            stat.textContent = '4+';
+                        }
+                    }
+                }
+
+                requestAnimationFrame(updateCounter);
+            });
+        }
+
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateStats();
+                    statsObserver.disconnect();
+                }
+            });
+        }, { threshold: 0.5 });
+
+        if (statsSection) {
+            statsObserver.observe(statsSection);
+        }
+
+        // ============================================
+        // PROGRESS BARS ANIMATION
+        // ============================================
+        const progressBars = document.querySelectorAll('.progress-fill');
+        let progressAnimated = false;
+
+        function animateProgressBars() {
+            if (progressAnimated) return;
+            progressAnimated = true;
+
+            progressBars.forEach(bar => {
+                const width = bar.getAttribute('data-width');
+                setTimeout(() => {
+                    bar.style.width = width + '%';
+                }, 200);
+            });
+        }
+
+        const progressObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateProgressBars();
+                    progressObserver.disconnect();
+                }
+            });
+        }, { threshold: 0.3 });
+
+        const expertiseSection = document.querySelector('.expertise');
+        if (expertiseSection) {
+            progressObserver.observe(expertiseSection);
+        }
+
+        // ============================================
+        // THEME TOGGLE
+        // ============================================
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        }
+
+        // Make toggleTheme globally accessible
+        window.toggleTheme = toggleTheme;
+
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+
+        // ============================================
+        // BACK TO TOP
+        // ============================================
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+        backToTop.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // ============================================
+        // SMOOTH SCROLL FOR NAV LINKS
+        // ============================================
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
     });
 </script>
 
